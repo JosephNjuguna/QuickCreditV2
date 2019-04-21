@@ -1,0 +1,87 @@
+.user-body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Raleway', sans-serif;
+}
+html,
+body {
+    height: 100%;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+button {
+    cursor: pointer;
+}
+/* NAVIGATION BAR */
+.nav-bar {
+    background-color: #FFFF;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    color: #486581;
+    padding: 5px 0;
+    position: fixed;
+    z-index: 3;
+}
+
+/* navbar done */
+.nav-ul-left {
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-self: left;
+}
+
+.nav-ul-right {
+    flex: 1;
+    padding: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.nav-left-header {
+    font-size: 35px;
+    padding: 0 4%;
+}
+
+.nav-right {
+    justify-self: flex-end;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 6px;
+    color: white;
+    padding: 8px;
+    margin: 0 8px;
+}
+
+.nav-bar button {
+    padding: 4px 0;
+    margin: 0 6px;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 5px;
+    color: #486581;
+    background-color: rgb(255, 255, 255);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.nav-bar button:hover,
+.nav-bar button:focus {
+    font-size: 14px;
+    padding: 5px 10px;
+    background-color: #0967D2;
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
