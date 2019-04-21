@@ -85,3 +85,17 @@ button {
     text-decoration: none;
     cursor: pointer;
 }
+/* footer */
+.footer {
+    display: flex;
+    background: #323F4B;
+    padding: 10px;
+    color: #fff;
+}
+.footer-items {
+    flex-basis: 30%;
+    margin: auto;
+}
+.year {
+    text-align: center
+}
