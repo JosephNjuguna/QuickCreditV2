@@ -99,3 +99,66 @@ button {
 .year {
     text-align: center
 }
+
+.middle-div-body {
+    margin-top: 60px;
+    padding: 6% 4%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-image: url('../images/background-balance-business-583846.jpg');
+}
+.intro-div {
+    background: rgba(0, 0, 0, 0.822);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+    flex-basis: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 6px;
+    color: white;
+}
+
+.auth-header-text {
+    margin: auto;
+    padding: 8% 4%;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 6px;
+}
+
+.welcome-header {
+    font-size: 20px;
+    margin:0;
+}
+
+.name-header {
+    font-size: 60px;
+    margin:0;
+}
+
+.explain-header {
+    font-size: 16px;
+}
+.auth-header-button {
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.auth-header-button button {
+    margin: 0 4px;
+    padding: 10px;
+    width: 150px;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 4px;
+    color: white;
+    background-color: #0967D2;
+    font-size: 14px;
+}
