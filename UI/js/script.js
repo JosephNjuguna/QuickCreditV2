@@ -1,9 +1,10 @@
-// div
+// index page div
 var signupmodal = document.getElementById('signupModal');
 var loginmodal = document.getElementById('loginModal');
-// button
+// index page button
 var signupbtn  = document.getElementById("signupBtn");
 var loginbtn  = document.getElementById("loginBtn");
+// navbar button
 var navloginbtn  = document.getElementById("navloginBtn");
 // modal close span
 var closesignupSpan = document.getElementById("closeSignup");
