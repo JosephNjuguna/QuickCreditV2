@@ -99,7 +99,27 @@ button {
 .year {
     text-align: center
 }
+/* modal close buttton */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close1 {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* body */
 .middle-div-body {
     margin-top: 60px;
     padding: 6% 4%;
@@ -225,4 +245,94 @@ button {
     font-size: 14px;
     justify-self: center;
     justify-self: baseline;
+}
+/* signup div */
+.signup-div {
+    flex-direction: row;
+    padding: 1%;
+    display: none;
+    position: fixed;
+    z-index: 4;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.705);
+}
+
+.signup-form {
+    background-color: #0967D2;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    flex-basis: 30%;
+    justify-content: flex-end;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 6px;
+}
+.form {
+    display: flex;
+    flex-basis: 100%;
+}
+.form form {
+    display: flex;
+    flex-basis: 100%;
+}
+.signup-input {
+    flex-basis: 100%;
+    display: flex;
+    background-color: rgb(255, 255, 255);
+    padding: 4px;
+    flex-direction: column;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 6px;
+}
+.signup-input button {
+    padding: 10px;
+    margin: auto;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 5px;
+    color: white;
+    background-color: #0967D2;
+    font-size: 14px;
+}
+
+.signup-input p {
+    color: black;
+    text-align: center;
+    font-size: 20px;
+    padding: 2px;
+}
+
+.signup-input label {
+    color: black;
+}
+.signup-input input {
+    flex: 1;
+    font-size: 25px;
+    background-color: rgba(2, 2, 2, 0);
+    padding: 2%;
+    font-size: 14px;
+    border-color: rgb(201, 201, 201);
+    border-width: 0 0 2px 0;
+}
+/* sign up buttons */
+.auth-button {
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+}
+.auth-state {
+    display: flex;
+    justify-content: center;
+}
+
+.auth-state a,label {
+    color: black;
+    padding: 6px 0;
 }
