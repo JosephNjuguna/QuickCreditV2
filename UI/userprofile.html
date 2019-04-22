@@ -16,13 +16,18 @@
     <div>
 
         <nav class="nav-bar">
-            
+
             <ul class="nav-ul-left">
                 <li class="nav-left-header">QuickCredit</li>
             </ul>
-            
-            <ul class="hidden nav-ul-right" id="nav-right-bar">
 
+            <ul class="hidden nav-ul-right" id="nav-right-bar">
+                <li class="nav-right">
+                    <button id="navHistorybtn"><i class="fa fa-line-chart"></i> loan history </button>
+                </li>
+                <li class="nav-right">
+                    <button id="navProfilebtn"><i class="fa fa-user-circle-o"></i> users account</button>
+                </li>
             </ul>
 
         </nav>
@@ -63,10 +68,70 @@
                                 </form>
                             </div>
                         </div>
-                        
+
                     </div>
                 </div>
             </div>
+
+            <div class="loan-history" id="history">
+                <div class="payment-div">
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">pending</p>
+                        </div>
+                        <p class="amount">sh<b> 4000</b></p>
+                    </div>
+
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">approved</p>
+                        </div>
+                        <p class="amount">sh<b> 30000</b></p>
+                    </div>
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">approved</p>
+                        </div>
+                        <p class="amount">sh<b> 30000</b></p>
+                    </div>
+
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">rejected</p>
+                        </div>
+                        <p class="amount">sh<b> 20000</b></p>
+                    </div>
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">rejected</p>
+                        </div>
+                        <p class="amount">sh<b> 20000</b></p>
+                    </div>
+
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">approved</p>
+                        </div>
+                        <p class="amount">sh<b> 120,000</b></p>
+                    </div>
+
+                    <div class="payment-history">
+                        <div class="history-header">
+                            <p class="date">1/1/2019</p>
+                            <p class="status">approved</p>
+                        </div>
+                        <p class="amount">sh<b> 2000</b></p>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
 
         <footer class="footer">
@@ -76,4 +141,7 @@
         </footer>
 
     </div>
+    <script type="text/javascript" src="./js/userprofile.js"></script>
 </body>
+
+</html>
