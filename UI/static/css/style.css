@@ -332,3 +332,104 @@ button {
     color: black;
     padding: 6px 0;
 }
+/* user profile page */
+.user-div-body {
+    margin-top: 62px;
+    min-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    background-color: #F0F4F8;
+}
+
+.user-div-body a,label {
+    color: #243B53;
+    padding: 4px;
+}
+
+.user-profile {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.user-profile button {
+    padding: 10px;
+    margin: auto;
+    border-style: groove;
+    border-width: 0;
+    border-radius: 5px;
+    color: white;
+    background-color: #0967D2;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.user-data-group {
+    padding: 0 4%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.user-all-data {
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+    justify-content: space-around;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+    border-width: 0;
+    border-radius: 6px;
+    border-style: solid;
+    border-color: rgb(207, 213, 219);
+}
+
+/* user private data */
+.user-data {
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 30%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 30%;
+}
+
+.user-info p {
+    padding: 4px;
+}
+/* user request loan */
+.user-loan-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.loan-div {
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+
+.loan-div input {
+    flex: 1;
+    font-size: 25px;
+    background-color: rgba(2, 2, 2, 0);
+    height: 30px;
+    padding: 1%;
+    font-size: 14px;
+    color: black;
+    border-color: rgb(201, 201, 201);
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 4px;
+}
+
+.intrest-percent {
+    margin: 0;
+    font-size: 12px;
+    color: #3E4C59;
+}
