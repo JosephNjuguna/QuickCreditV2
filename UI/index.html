@@ -24,7 +24,7 @@
 
             <ul class="hidden nav-ul-right ">
                 <li class="nav-right">
-                    <button id="loginBtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> log in</button>
+                    <button id="navloginBtn"><i class="fa fa-user-circle-o" aria-hidden="true"></i> log in</button>
                 </li>
             </ul>
 
@@ -49,13 +49,13 @@
                     <button type="button" id="loginBtn"><b>LOG IN</b></button>
                 </div>
 
-                <div class="signup-div" id="signupModal">
+                <div class="auth-div" id="signupModal">
                     
-                    <div class="signup-form">
+                    <div class="auth-form">
                         <div class="form">
                             <form action="#" id=form>
-                                <div class="signup-input">
-                                    <p><b>please fill all required fields.</b><span class="close">&times;</span>                                    </p>
+                                <div class="auth-input">
+                                    <p><b>please fill all required fields.</b><span class="close" id="closeSignup">&times;</span>                                    </p>
                                     <label for="">firstname*</label>
                                     <input type="text" placeholder="enter your first name">
                                     <label for=""> lastname*</label>
@@ -71,6 +71,36 @@
                                     </div>
                                     <div class="auth-state">
                                         <label>Already have account ? <a id="myBtn4" class="link" href="#"><b>Log in</b></a></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="auth-div" id="loginModal">
+                    
+                    <div class="auth-form">
+                        <div class="form">
+                            <form action="./userprofile.html" id=form>
+                                <div class="auth-input">
+                                    <p><b>log in to your account.</b><span class="close" id="closeLogin">&times;</span></p>
+                                    <label for=""><i class="fa fa-envelope-o"></i> email</label>
+                                    <input type="email" placeholder="enter your email address">
+                                    <label for=""><i class="fa fa-lock"></i> password</label>
+                                    <input type="password" placeholder="enter your password">
+                                    <div class="auth-button">
+                                        <button class="user-authenticate" type="submit">LOG IN</button>
+                                    </div>
+
+                                    <div class="auth-state">
+                                        <label>New to QuickCredit ? <a id="myBtn3" class="link"><b>Sign Up</b></a>
+                                        </label>
+                                    </div>
+                                    <div class="auth-state">
+                                        <label>Continue as <a href="./admindashboard.html" class="link"><b>Admin</b></a>
+                                        </label>
                                     </div>
                                 </div>
                             </form>
