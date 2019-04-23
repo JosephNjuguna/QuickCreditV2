@@ -12,69 +12,148 @@
 </head>
 
 <body class="user-body">
-    <div class="main-body">
+    <div>
 
-        <nav class="nav-bar">
+        <div class="main-body">
 
-            <ul class="nav-ul-left">
-                <li class="nav-left-header">QuickCredit</li>
-            </ul>
+            <nav class="nav-bar">
 
-            <ul class="nav-ul-right hidden" id="hiddenNavbar">
-                <li class="nav-middle">
-                    <button class="adminNavbtn" id="userVerification"><i class="fa fa-certificate"></i> Verify
-                        users</button>
-                </li>
-            </ul>
+                <ul class="nav-ul-left">
+                    <li class="nav-left-header"><a href="./admindashboard.html">QuickCredit</a></li>
+                </ul>
 
-        </nav>
+                <ul class="nav-ul-right hidden" id="hiddenNavbar">
+                    <li class="nav-middle">
+                        <button class="adminNavbtn" id="newLoans"><i class="fa fa-file-text-o"></i> new loan
+                            applications</button>
+                    </li>
+                    <li class="nav-middle">
+                        <button class="adminNavbtn" id="userVerification"><i class="fa fa-certificate"></i> Verify
+                            users</button>
+                    </li>
+                </ul>
 
-        <div class="admin-data">
-            <div class="loan-applications" id="verification">
+            </nav>
 
-                <div class="dashboard-header">
-                    <p>User Verification :</p>
+            <div class="admin-data">
+
+                <div class="loan-applications" id="application">
+
+                    <div class="dashboard-header">
+                        <p>Loan Applications :</p>
+                    </div>
+
+                    <div class="application-content">
+
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>J. Njuguna</b></p>
+                                <p class="time"><b>1/2/2019</b></p>
+                            </div>
+
+                            <div class="info-detail">
+                                <p class="email">njuguna482@gmail.com</p>
+                                <p class="address">Address: nairobi, kenya</p>
+                            </div>
+
+                            <div class="info-header">
+                                <p class="amount">sh <b>10000</b></p>
+                                <a class="details" href="./loan">view detail</a>
+                            </div>
+
+                            <div class="info-header">
+                                <a class="reject" href="#reject">REJECT</a>
+                                <a class="accept" href="#accept">ACCEPT APPLICATION</a>
+                            </div>
+                        </div>
+
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>Alan W</b></p>
+                                <p class="time"><b>1/2/2019</b></p>
+                            </div>
+                            <p class="email">alan@gmail.com</p>
+                            <p class="address">Address: nairobi, kenya</p>
+                            <div class="info-header">
+                                <p class="amount">sh <b>9000</b></p>
+                                <a class="details" href="./loan">view detail</a>
+                            </div>
+                            <div class="info-header">
+                                <a class="reject" href="#reject">REJECT</a>
+                                <a class="accept" href="#accept">ACCEPT APPLICATION</a>
+                            </div>
+
+                        </div>
+
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>Eduoard I</b></p>
+                                <p class="time"><b>1/2/2019</b></p>
+                            </div>
+                            <p class="email">erdard@gmail.com</p>
+                            <p class="address">Address: nairobi, kenya</p>
+                            <div class="info-header">
+                                <p class="amount">sh <b>9000</b></p>
+                                <a class="details" href="./loan">view detail</a>
+                            </div>
+                            <div class="info-header">
+                                <a class="reject" href="#reject">REJECT</a>
+                                <a class="accept" href="#accept">ACCEPT APPLICATION</a>
+                            </div>
+
+                        </div>
+
+                    </div>
+
                 </div>
-                <div class="application-content">
 
-                    <div class="application-detail">
-                        <div class="info-header">
-                            <p class="name"><b>Charles</b></p>
-                            <p class="time"><b>1/3/2019</b></p>
-                        </div>
-                        <p class="email">charles@gmail.com</p>
-                        <p class="address">Address:kenya</p>
-                        <div class="info-header">
-                            <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
-                            <a class="accept" href="#">VERIFY</a>
-                        </div>
+                <div class="loan-applications" id="verification">
 
+                    <div class="dashboard-header">
+                        <p>User Verification :</p>
                     </div>
+                    <div class="application-content">
 
-                    <div class="application-detail">
-                        <div class="info-header">
-                            <p class="name"><b>Austin </b></p>
-                            <p class="time"><b>10/3/2019</b></p>
-                        </div>
-                        <p class="email">austin@gmail.com</p>
-                        <p class="address">Address: nairobi</p>
-                        <div class="info-header">
-                            <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
-                            <a class="accept" href="#">VERIFY</a>
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>Charles B.</b></p>
+                                <p class="time"><b>1/3/2019</b></p>
+                            </div>
+                            <p class="email">charles@gmail.com</p>
+                            <p class="address">Address:kenya</p>
+                            <div class="info-header">
+                                <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
+                                <a class="accept" href="#">VERIFY USER</a>
+                            </div>
+
                         </div>
 
-                    </div>
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>Austin N.</b></p>
+                                <p class="time"><b>10/3/2019</b></p>
+                            </div>
+                            <p class="email">austin@gmail.com</p>
+                            <p class="address">Address: nairobi</p>
+                            <div class="info-header">
+                                <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
+                                <a class="accept" href="#">VERIFY USER</a>
+                            </div>
 
-                    <div class="application-detail">
-                        <div class="info-header">
-                            <p class="name"><b>Joseph</b></p>
-                            <p class="time"><b>21/3/2019</b></p>
                         </div>
-                        <p class="email">josephn@gmail.com</p>
-                        <p class="address">Address: kenya</p>
-                        <div class="info-header">
-                            <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
-                            <a class="accept" href="#">VERIFY USER</a>
+
+                        <div class="application-detail">
+                            <div class="info-header">
+                                <p class="name"><b>Joseph W.</b></p>
+                                <p class="time"><b>21/3/2019</b></p>
+                            </div>
+                            <p class="email">josephn@gmail.com</p>
+                            <p class="address">Address: kenya</p>
+                            <div class="info-header">
+                                <a class="reject" href="#">REJECT <i class="fa fa-remove"></i></a>
+                                <a class="accept" href="#">VERIFY USER</a>
+                            </div>
+
                         </div>
 
                     </div>
@@ -83,15 +162,17 @@
 
             </div>
         </div>
+        
+        <footer class="footer">
+            <div class="footer-items">
+                <p class="year">2019 <i class="fa fa-copyright"></i></p>
+            </div>
+        </footer>
 
     </div>
 
-    <footer class="footer">
-        <div class="footer-items">
-            <p class="year">2019 <i class="fa fa-copyright"></i></p>
-        </div>
-    </footer>
     <script type="text/javascript" src="./js/admin.js"></script>
 
 </body>
+
 </html>
