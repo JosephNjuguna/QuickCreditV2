@@ -615,4 +615,99 @@ a{
     margin: 1%;
     padding: 6px;
 }
- 
+ /* indexpage */
+@media screen and (max-width:700px) {
+    .middle-div-body {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('../image/background-balance-business-583846.jpg');
+    }
+
+    .intro-div {
+        padding: 0;
+        margin: auto;
+        background: rgba(0, 0, 0, 0.836);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        flex-basis: 70%;
+        display: flex;
+        flex-direction: column;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 0px;
+        color: white;
+    }
+
+    .auth-header-text {
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        padding: 2px 4px;
+    }
+
+    .auth-button {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-div {
+        flex-direction: row;
+        padding: 1%;
+        display: none;
+        position: fixed;
+        z-index: 4;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.705);
+    }
+
+    .form {
+        display: flex;
+        flex-basis: 100%;
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        flex-basis: 90%;
+        justify-content: flex-end;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: none;
+    }
+
+    .bottom-header-text {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 1%;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        justify-content: space-around;
+    }
+
+    .explanatory-text {
+        margin: 2%;
+        display: flex;
+        flex-direction: row;
+        flex-basis: 30%;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        background-color: #FFFF;
+        padding: 1%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+    }
+}
