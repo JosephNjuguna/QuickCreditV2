@@ -966,3 +966,202 @@ a{
         font-size: 20px;
     }
 }
+/* admin dashboard */
+@media screen and (max-width:700px) {
+    .admin-data {
+        min-height: 90vh;
+        padding-top: 60px;
+    }
+
+    .loan-applications {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-content {
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-detail {
+        margin: 1% 1%;
+        padding: 0px;
+        flex-basis: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+        background-color: white;
+        border-width: 0px;
+        border-radius: 6px;
+        border-style: solid;
+    }
+
+    .application-detail .info-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .application-detail .name {
+        color: #334E68;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .time {
+        color: #334E68;
+        padding: 2%;
+        flex-basis: 25%;
+    }
+
+    .application-detail .email {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .address {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .amount {
+        color: black;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .details {
+        color: #127FBF;
+        padding: 2%;
+        flex: 1;
+        text-align: end;
+        text-decoration: none;
+    }
+
+    .application-detail .accept {
+        color: white;
+        padding: 2%;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        background-color: #0967D2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #0967D2;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 6px;
+        padding: 6px
+    }
+
+    .application-detail .reject {
+        color: rgb(255, 0, 0);
+        padding: 2%;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        padding: 6px;
+    }
+
+}
+/* loan div */
+@media screen and (min-width: 700px) {
+
+    .loan-applications {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-content {
+        padding: 0 3%;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .application-detail {
+        margin: 1% 1%;
+        padding: 0px;
+        flex-basis: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+        background-color: white;
+        border-width: 0px;
+        border-radius: 6px;
+        border-style: solid;
+    }
+
+    .application-detail .info-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .application-detail .name {
+        color: #334E68;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .time {
+        color: #334E68;
+        padding: 2%;
+        flex-basis: 25%;
+    }
+
+    .application-detail .email {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .address {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .amount {
+        color: black;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .details {
+        color: #127FBF;
+        padding: 2%;
+        flex: 1;
+        text-align: end;
+        text-decoration: none;
+    }
+
+    .application-detail .accept {
+        color: white;
+        padding: 2%;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        background-color: #0967D2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #0967D2;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 6px;
+        padding: 6px
+    }
+
+    .application-detail .reject {
+        color: rgb(255, 0, 0);
+        padding: 2%;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        padding: 6px;
+    }
+}
