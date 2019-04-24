@@ -66,7 +66,7 @@
 
                             <div class="info-header">
                                 <p class="amount">sh <b>10000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
 
                             <div class="info-header">
@@ -84,7 +84,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>9000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan-detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="reject" href="#reject">REJECT</a>
@@ -102,7 +102,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>9000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan-detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="reject" href="#reject">REJECT</a>
@@ -184,7 +184,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>10000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" href="#accept">PAID <i class="fa fa-check-square-o"></i></a>
@@ -201,7 +201,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>7000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" href="#accept">PAID <i class="fa fa-check-square-o"></i></a>
@@ -218,7 +218,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>11000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" href="#accept">PAID <i class="fa fa-check-square-o"></i></a>
@@ -235,7 +235,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>3000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" href="#accept">PAID <i class="fa fa-check-square-o"></i></a>
@@ -252,7 +252,7 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>3000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" href="#accept">PAID <i class="fa fa-check-square-o"></i></a>
@@ -280,12 +280,11 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>10000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" id="payment-status">IN PROGRESS</a>
                             </div>
-
                         </div>
 
                         <div class="application-detail">
@@ -297,12 +296,11 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>9000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" id="payment-status">OVERDUE</a>
                             </div>
-
                         </div>
 
                         <div class="application-detail">
@@ -314,12 +312,11 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>9000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" id="payment-status">IN PROGRESS</a>
                             </div>
-
                         </div>
 
                         <div class="application-detail">
@@ -331,19 +328,54 @@
                             <p class="address">Address: nairobi, kenya</p>
                             <div class="info-header">
                                 <p class="amount">sh <b>9000</b></p>
-                                <a class="details" href="./loan">view detail</a>
+                                <a class="details" href="#" id="loan_detail">view detail</a>
                             </div>
                             <div class="info-header">
                                 <a class="accept" id="payment-status">IN PROGRESS</a>
                             </div>
-
                         </div>
 
                     </div>
+                </div>
 
+                <div class="user-loan" id="loandetail">
+                    <div class="user-loan-detail">
+                        <div>
+                            <p><b>loan detail:</b><span class="close" id="loandetailModal">&times;</span></p>
+                            <div class="status-div">
+                                <label class="status-info">name :</label>
+                                <p class="name">Joseph N.</p>
+                            </div>
+                            <div class="status-div">
+                                <label class="status-info">email :</label>
+                                <p class="name">josephnjuguna482@gmail.com</p>
+                            </div>
+                            <div class="status-div">
+                                <label class="status-info">Address:</label>
+                                <p class="status-balance">nairobi</p>
+                            </div>
+                            <div class="status-div">
+                                <label class="status-info">Loan requested on:</label>
+                                <p class="status-balance">1/1/2019</p>
+                            </div>
+                            <div class="status-div">
+                                <label class="status-info">Amount:</label>
+                                <p class="status-balance">35000</p>
+                            </div>
+                            <div class="status-div">
+                                <label class="status-info" for="">Repaymant period:</label>
+                                <p class="status-balance">3 months</p>
+                            </div>
+                            <div class="info-header">
+                                <a class="reject" href="#reject">REJECT</a>
+                                <a class="accept" href="#accept">ACCEPT APPLICATION</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
+
         </div>
 
         <footer class="footer">
