@@ -34,6 +34,9 @@ a{
     position: fixed;
     z-index: 3;
 }
+.nav-ul-left .burger-nav {
+    display: none;
+}
 
 /* navbar done */
 .nav-ul-left {
@@ -541,11 +544,7 @@ a{
     border-radius: 6px;
     border-style: solid;
 }
-.info-detail{
-    padding:0;
-    display: flex;
-    flex-direction: column;
-}
+
 .info-header {
     display: flex;
     flex-direction: row;
@@ -590,29 +589,677 @@ a{
     text-align: end;
     text-decoration: none;
 }
-.accept {
-    color: white;
-    padding: 2%;
-    font-size: 14px;
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    margin: 1%;
-    background-color: #0967D2;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
-    border-color: #0967D2;
-    border-width: 2px;
-    border-style: solid;
-    border-radius: 6px;
-    padding: 6px
+@media screen and (min-width: 700px){
+    .info-detail{
+        padding:0;
+        display: flex;
+        flex-direction: column;
+    }
+    .accept {
+        color: white;
+        padding: 2%;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        background-color: #0967D2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #0967D2;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 6px;
+        padding: 6px
+    }
+    .reject {
+        color: rgb(255, 0, 0);
+        padding: 2%;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        padding: 6px;
+    }
 }
-.reject {
-    color: rgb(255, 0, 0);
-    padding: 2%;
-    flex: 1;
-    text-align: center;
-    text-decoration: none;
-    margin: 1%;
-    padding: 6px;
+/* responsive navbar*/
+@media screen and (max-width: 700px) {
+
+    .hidden {
+        display: none;
+    }
+
+    .nav-bar {
+        background-color: #FFFF;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        color: #486581;
+        padding: 5px 0;
+        position: fixed;
+        z-index: 3;
+    }
+
+    .nav-ul-left {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .nav-left-header {
+        font-size: 35px;
+        padding: 1%;
+        flex: 1;
+    }
+
+    .nav-ul-left .burger-nav {
+        display: flex;
+        text-align: end;
+        font-size: 30px;
+        padding: 4px 2px;
+        justify-content: flex-end;
+    }
+
+    .nav-ul-left .burger-nav i {
+        flex: 1;
+        text-align: end;
+        font-size: 30px;
+        padding: 4px 2px;
+    }
+
+    .nav-ul-right {
+        width: 100%;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding: 0;
+        margin-top: 50px;
+        padding: 1%;
+        position: inherit;
+        z-index: 4;
+        left: 0;
+        top: 0;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.705);
+    }
+
+    .nav-right {
+        padding: 0;
+        margin: 0;
+    }
+
+    .nav-bar button {
+        margin: 1px;
+        width: 96%;
+        text-align: start;
+        padding: 3%;
+        color: #486581;
+        background-color: rgb(255, 255, 255);
+        font-size: 14px;
+        cursor: pointer;
+        background-color: rgb(255, 255, 255)
+    }
+
+    .nav-bar button:hover,
+    .nav-bar button:focus {
+        font-size: 14px;
+        padding: 5px 10px;
+        background-color: #0967D2;
+        color: #fff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
 }
- 
+ /* indexpage */
+@media screen and (max-width:700px) {
+    .middle-div-body {
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-image: url('../image/background-balance-business-583846.jpg');
+    }
+
+    .intro-div {
+        padding: 0;
+        margin: auto;
+        background: rgba(0, 0, 0, 0.836);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        flex-basis: 70%;
+        display: flex;
+        flex-direction: column;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 0px;
+        color: white;
+    }
+
+    .auth-header-text {
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        padding: 2px 4px;
+    }
+
+    .auth-button {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .auth-div {
+        flex-direction: row;
+        padding: 1%;
+        display: none;
+        position: fixed;
+        z-index: 4;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.705);
+    }
+
+    .form {
+        display: flex;
+        flex-basis: 100%;
+    }
+
+    .auth-form {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        flex-basis: 90%;
+        justify-content: flex-end;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: none;
+    }
+
+    .bottom-header-text {
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        padding: 1%;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        justify-content: space-around;
+    }
+
+    .explanatory-text {
+        margin: 2%;
+        display: flex;
+        flex-direction: row;
+        flex-basis: 30%;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 6px;
+        background-color: #FFFF;
+        padding: 1%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+    }
+}
+/* user profile */
+@media screen and (max-width: 700px) {
+
+    .user-div-body {
+        margin-top: 62px;
+        min-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        background-color: #F0F4F8;
+    }
+
+    .user-div-body a,
+    label {
+        color: #243B53;
+        padding: 4px;
+    }
+
+    .user-profile {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .user-profile button {
+        padding: 10px;
+        margin: auto;
+        border-style: groove;
+        border-width: 0;
+        border-radius: 5px;
+        color: white;
+        background-color: #0967D2;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .user-data-group {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .user-all-data {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-width: 0;
+        border-radius: 6px;
+        border-style: solid;
+        border-color: rgb(207, 213, 219);
+    }
+
+    .user-loan {
+        padding: 0;
+        flex-direction: row;
+        display: none;
+        position: fixed;
+        z-index: 4;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.705);
+    }
+
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+    .user-loan-detail {
+        flex-basis: 90%;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-width: 0;
+        border-radius: 6px;
+        border-style: solid;
+        border-color: rgb(207, 213, 219);
+    }
+
+    /* user private data */
+    .user-data {
+        padding: 6px;
+        display: flex;
+        flex-direction: row;
+        flex-basis: 90%;
+    }
+
+    .user-info {
+        display: flex;
+        flex-direction: column;
+        flex-basis: 100%;
+    }
+
+    .user-info p {
+        padding: 4px;
+    }
+
+    /* user request loan */
+    .user-loan-input {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .loan-div {
+        justify-content: space-around;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .loan-div input {
+        flex: 1;
+        font-size: 25px;
+        background-color: rgba(2, 2, 2, 0);
+        height: 30px;
+        padding: 1%;
+        font-size: 14px;
+        color: black;
+        border-color: rgb(201, 201, 201);
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 4px;
+    }
+
+    .auth-button {
+        padding: 6px;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .intrest-percent {
+        margin: 0;
+        font-size: 12px;
+        color: #3E4C59;
+    }
+
+    /* ----user profile-------*/
+    .user-loan-status {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 30%;
+        background-color: white;
+        border-width: 2px;
+        border-radius: 6px;
+    }
+
+    .loan-icon {
+        text-align: center;
+    }
+
+    .loan-stage {
+        margin: 4% 4%;
+        text-align: center;
+        padding: 4%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        background-color: white;
+        border-width: 2px;
+        border-radius: 6px;
+        border-style: solid;
+        border-color: rgb(207, 213, 219);
+    }
+
+    /* ---------- */
+    .user-loan-balance {
+        padding: 6px;
+        display: flex;
+        flex-direction: column;
+        flex-basis: 30%;
+        background-color: white;
+        border-width: 2px;
+        border-radius: 6px;
+    }
+
+    .status-div {
+        margin: 2% 0;
+    }
+
+    .time-div {
+        margin: 2% 0;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .time {
+        flex: 1;
+    }
+
+    .status-info {
+        font-size: 14px;
+    }
+
+    .status-balance {
+        padding: 2% 4%;
+        font-size: 20px;
+    }
+
+    /* user loan history */
+    .loan-history {
+        display: none;
+        flex-basis: 100%;
+        flex-direction: column;
+    }
+
+    .payment-div {
+        padding: 0;
+        margin: 0;
+    }
+
+    .payment-history {
+        display: flex;
+        flex-basis: 100%;
+        height: 100px;
+        flex-direction: column;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #9AA5B1;
+        border-width: 2px;
+        border-radius: 6px;
+        padding: 6px
+    }
+
+    .history-header {
+        display: flex;
+        flex-direction: row;
+        padding: 6px;
+        justify-content: space-between;
+    }
+
+    .date {
+        color: #0967D2;
+        padding: 6px;
+    }
+
+    .status {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: rgb(17, 0, 255);
+        border-width: 2px;
+        border-radius: 16px;
+        border-style: solid;
+        padding: 6px;
+    }
+
+    .amount {
+        font-size: 20px;
+    }
+}
+/* admin dashboard */
+@media screen and (max-width:700px) {
+    .admin-data {
+        min-height: 90vh;
+        padding-top: 60px;
+    }
+
+    .loan-applications {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-content {
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-detail {
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        flex-basis: 100%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+        background-color: rgb(255, 255, 255);
+        border-width: 0px;
+        border-radius: 6px;
+        border-style: solid;
+    }
+
+    .info-header {
+        padding: 0;
+        margin: 1%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .application-detail .name {
+        color: #334E68;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .time {
+        color: #334E68;
+        padding: 2%;
+        flex-basis: 25%;
+    }
+
+    .application-detail .email {
+        color: #334E68;
+        padding: 0;
+        margin: 1%;
+    }
+
+    .application-detail .address {
+        color: #334E68;
+        padding: 0;
+        margin: 1%;
+    }
+
+    .application-detail .amount {
+        color: black;
+        padding: 0;
+        margin: 1%;
+        flex: 1;
+    }
+
+    .application-detail .details {
+        color: #127FBF;
+        padding: 2%;
+        flex: 1;
+        text-align: end;
+        text-decoration: none;
+    }
+
+    .accept {
+        color: white;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        background-color: #0967D2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #0967D2;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 6px;
+        padding: 6px;
+        
+    }
+
+    .reject {
+        color: rgb(255, 0, 0);
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        padding: 6px;
+    }
+
+}
+/* loan div */
+@media screen and (min-width: 700px) {
+
+    .loan-applications {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .application-content {
+        padding: 0 3%;
+        flex: 1;
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .application-detail {
+        margin: 1% 1%;
+        padding: 0px;
+        flex-basis: 30%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+        background-color: white;
+        border-width: 0px;
+        border-radius: 6px;
+        border-style: solid;
+    }
+
+    .application-detail .info-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .application-detail .name {
+        color: #334E68;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .time {
+        color: #334E68;
+        padding: 2%;
+        flex-basis: 25%;
+    }
+
+    .application-detail .email {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .address {
+        color: #334E68;
+        padding: 2%;
+        margin: 2% 0;
+    }
+
+    .application-detail .amount {
+        color: black;
+        padding: 2%;
+        flex: 1;
+    }
+
+    .application-detail .details {
+        color: #127FBF;
+        padding: 2%;
+        flex: 1;
+        text-align: end;
+        text-decoration: none;
+    }
+
+    .application-detail .accept {
+        color: white;
+        padding: 2%;
+        font-size: 14px;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        background-color: #0967D2;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-color: #0967D2;
+        border-width: 2px;
+        border-style: solid;
+        border-radius: 6px;
+        padding: 6px
+    }
+
+    .application-detail .reject {
+        color: rgb(255, 0, 0);
+        padding: 2%;
+        flex: 1;
+        text-align: center;
+        text-decoration: none;
+        margin: 1%;
+        padding: 6px;
+    }
+}
