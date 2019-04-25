@@ -5,6 +5,8 @@ var ul = document.getElementsByClassName("nav-ul-right")[0];
 // index page button
 var signupbtn  = document.getElementById("signupBtn");
 var loginbtn  = document.getElementById("loginBtn");
+var btnlogin = document.getElementById("myBtnlogin");
+var btnsignup = document.getElementById("myBtnsignup");
 // navbar button
 var navloginbtn  = document.getElementById("navloginBtn");
 // modal close span
@@ -21,10 +23,18 @@ shownavBtn.onclick = function() {
 signupbtn.onclick = function() {
     signupmodal.style.display = "flex";  
 };
+btnsignup.onclick = function() {
+    signupmodal.style.display = "flex";
+    loginmodal.style.display = "none";
+};
 closesignupSpan.onclick = function() {
     signupmodal.style.display = "none";  
 };
 // user login
+btnlogin.onclick = function() {
+    loginmodal.style.display = "flex"; 
+    signupmodal.style.display = "none";
+};
 loginbtn.onclick = function() {
     loginmodal.style.display = "flex";  
 };
