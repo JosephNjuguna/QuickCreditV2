@@ -92,6 +92,37 @@ a{
     text-decoration: none;
     cursor: pointer;
 }
+.dropdown {
+    padding: 0;
+    margin: 0;
+}
+.dropdown-content {
+    display: none;
+    position: sticky;
+    background-color: rgb(255, 255, 255);
+    min-width: 120px;
+    z-index: 3;
+}
+.dropdown-content a {
+    color: black;
+    padding: 2%;
+    text-decoration: none;
+    display: block;
+}
+.dropdown-content a:hover {
+    font-size: 20px;
+    color: #fff;
+    background-color: #334E68;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.dropdown:hover .dropbtn {
+    background-color: #0967D2;
+    padding: 10px;
+    color: #fff;
+}
+
 /* footer */
 .footer {
     display: flex;
