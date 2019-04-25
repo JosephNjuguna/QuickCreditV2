@@ -412,9 +412,63 @@ a{
 .user-data {
     padding: 6px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex-basis: 30%;
 }
+.user-loan-data {
+    padding: 6px;
+    display: flex;
+    flex-direction: row;
+    flex-basis: 70%;
+}
+th, tr,table, td {
+    border: 1px solid #d4caca;
+    border-collapse: collapse;
+    padding: 10px;
+    text-align: end;
+}
+.loan-table {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 100%;
+}
+.loan-status{
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(154, 165, 177, 0.315);
+    justify-content: space-between;
+    border-color: rgb(201, 201, 201);
+    border-width: 0;
+    border-style: solid;
+    border-radius: 4px;
+}
+.table-header{
+    display: flex;
+    flex-direction: row;
+}
+.table-header div{
+    display: flex;
+    flex: 1;
+    justify-content: space-around;
+    flex-direction:row;
+    margin: 0;
+}
+.loan-status .info{
+    padding: 0;
+    margin: 0;
+    justify-content: space-between;
+    color: rgba(36, 59, 83, 0.664);
+}
+.loan-status .message{
+    padding: 0;
+    margin: 0 2%;
+    color: #0967D2;
+    flex: 1;
+    justify-content: space-between;
+}
+
+
 .user-info {
     display: flex;
     flex-direction: column;
@@ -841,6 +895,58 @@ a{
 }
 /* user profile */
 @media screen and (max-width: 700px) {
+    .loan-status{
+        padding: 1%;
+        display: flex;
+        flex-direction: column;
+        background-color: rgba(154, 165, 177, 0.507);
+        justify-content: space-between;
+        border-color: rgb(201, 201, 201);
+        border-width: 0;
+        border-style: solid;
+        border-radius: 4px;
+    }
+    .table-header{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+    }
+    .table-header p{
+        display: flex;
+        flex-direction: column;
+        padding: 2px;
+        margin: 0;
+    }
+    .table-header div{
+        display: flex;
+        flex-direction: row;
+        padding: 2px;
+        margin: 0;
+    }
+    .loan-status{
+        padding: 4px;
+        margin: 0; 
+    }
+    .loan-status .message{
+        padding: 2px;
+        margin: 0;
+        color: rgb(21, 4, 253);
+        flex: 1;
+        justify-content: space-between;
+    }
+    
+    .user-all-data {
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        justify-content: space-around;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, .3);
+        border-width: 0;
+        border-radius: 6px;
+        border-style: solid;
+        border-color: rgb(207, 213, 219);
+    }
 
     .user-div-body {
         margin-top: 62px;
