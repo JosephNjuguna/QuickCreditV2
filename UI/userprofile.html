@@ -57,7 +57,7 @@
                         <div class="user-data">
                             <div class="user-info">
                                 <div>
-                                    <p>my info: </p>
+                                    <p><b>my info:</b></p>
                                 </div>
                                 <label> <i class="fa fa-user-circle-o"></i> username</label>
                                 <p>Joseph Njuguna</p>
@@ -95,10 +95,10 @@
                                     </p>
                                 </div>
                                 <div class="table-header">
-                                    <p><b>my loan Repayment info:</b></p>
+                                    <p><b>my loan repayment info:</b></p>
                                     <div>
-                                        <p>Loan Requested on: <b>1/2/2019</b></p>
-                                        <p>Amount Requested: <b>10000</b></p>
+                                        <p>loan requested on: <b>1/2/2019</b></p>
+                                        <p>amount requested: <b>10000</b></p>
                                     </div>
                                 </div>
                                 <table class="cart-content">
@@ -146,49 +146,49 @@
 
                     <div class="user-loan" id="payloan">
                         <div class="user-loan-detail">
-
-                            <div>
+                            <span class="close" id="payloanModal">&times;</span>
+                            <div class="detailed-loan">
                                 <div class="status-div">
-                                    <span class="close" id="payloanModal">&times;</span>
                                     <label class="status-info">Loan requested on:</label>
                                     <p class="status-balance">1/1/2019</p>
                                 </div>
 
                                 <div class="status-div">
-                                    <label class="status-info">Balance :</label>
+                                    <label class="status-info">balance :</label>
                                     <p class="status-balance">35000</p>
                                 </div>
 
                                 <div class="status-div">
-                                    <label class="status-info" for="">Repaymant period:</label>
+                                    <label class="status-info" for="">repaymant period:</label>
                                     <p class="status-balance">3 months</p>
                                 </div>
 
                                 <div class="status-div">
-                                    <label class="status-info" for="">Remaining period:</label>
+                                    <label class="status-info" for="">remaining period:</label>
                                     <p class="status-balance">1 month</p>
                                 </div>
 
+                                <form action="./userprofile.html">
+                                    <div class="user-loan-input">
+    
+                                        <div class="loan-div">
+    
+                                            <label for="">enter loan amount*</label>
+                                            <input class="loan-amount" type="text"
+                                                placeholder="between sh500 - sh1,000,000">
+                                            <p class="intrest-percent">loan intrest for (amount) is: 5%</p>
+    
+                                        </div>
+    
+                                        <div class="auth-button">
+                                            <button class="user-authenticate" type="submit">PAY LOAN</button>
+                                        </div>
+    
+                                    </div>
+                                </form>
+                                
                             </div>
 
-                            <form action="./userprofile.html">
-                                <div class="user-loan-input">
-
-                                    <div class="loan-div">
-
-                                        <label for="">enter loan amount*</label>
-                                        <input class="loan-amount" type="text"
-                                            placeholder="between sh500 - sh1,000,000">
-                                        <p class="intrest-percent">loan intrest for (amount) is: 5%</p>
-
-                                    </div>
-
-                                    <div class="auth-button">
-                                        <button class="user-authenticate" type="submit">PAY LOAN</button>
-                                    </div>
-
-                                </div>
-                            </form>
 
                         </div>
                     </div>
