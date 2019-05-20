@@ -1,0 +1,39 @@
+{
+  "name": "quickcredit",
+  "version": "2.0.0",
+  "description": "quickcredit version 2.database: postgres.",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_ENV=dev nodemon server.js --exec babel-node --",
+    "lint": "node_modules/.bin/eslint ./ --fix",
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JosephNjuguna/QuickCredit.git"
+  },
+  "keywords": [
+    "javascript",
+    "andela"
+  ],
+  "author": "JosephNjuguna",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JosephNjuguna/QuickCredit/issues"
+  },
+  "homepage": "https://github.com/JosephNjuguna/QuickCredit#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.0",
+    "nodemon": "^1.19.0", 
+    "dotenv": "^7.0.0"
+
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2"
+  }
+}
