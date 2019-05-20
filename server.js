@@ -6,6 +6,6 @@ app.listen(port, (err) => {
 	if (err) {
 		console.log(`Server is not listening on port : ${port}`);
 	} else {
-		console.log(`Vice listening on port ${port}`);
+		console.log(`API listening on port ${port}`);
 	}
 });
