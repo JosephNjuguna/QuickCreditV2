@@ -33,8 +33,10 @@ class DatabaseInit {
 
       this.initDb();
       this.createAdmin();
+      this.requestLoan();
 
     } catch (error) {
+      return error.toString();
     }
   }
 
@@ -46,7 +48,7 @@ class DatabaseInit {
       }
       return await conn.query(sql);
     } catch (err) {
-      return err;
+      return err.toString();
     }
   }
 
@@ -54,7 +56,7 @@ class DatabaseInit {
     try {
       await this.query(this.queryUsers);
     } catch (error) {
-      console.log(error);
+      return error.toString();
     }
   }
 
@@ -84,16 +86,17 @@ class DatabaseInit {
           isAdmin: true,
           signedupDate: userDate.date()
         };
-        const sql = 'INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8 , $9) returning *';
+        const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8 , $9) returning *';
         const value = [adminUser.email, adminUser.firstname, adminUser.lastname, adminUser.password, adminUser.address, adminUser.status, adminUser.isAdmin, adminUser.signedupDate];
         const {
           row
         } = this.query(sql, value);
       }
     } catch (error) {
+      return error.toString();
     }
   }
-  
+
 }
 
 export default new DatabaseInit();

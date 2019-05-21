@@ -5,7 +5,6 @@ import reqResponses from '../helpers/Responses';
 dotenv.config();
 
 class Token {
-
   static generateToken(email,firstname, lastname, address) {
     const payload =  {email,firstname, lastname, address};
     const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 * 7 });
@@ -18,7 +17,6 @@ class Token {
     }
     return true;
   }
-
 }
 
 export default Token;

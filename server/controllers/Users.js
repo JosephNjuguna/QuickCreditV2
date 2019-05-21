@@ -7,7 +7,6 @@ import jwtGen from '../helpers/Jwt';
 const signedupDate = userDate.date();
 
 class Users {
-
   static async signup(req, res) {
     try {
       const {
@@ -38,6 +37,23 @@ class Users {
     }
   }
 
-}
+  static async login(req, res) {
+    try {
+      const incomingEmail = req.body.email;
+      const { password } = req.body;
+      const addUser = await Usermodel.login(incomingEmail);
+      const { email, firstname, lastname, address} = addUser;
+      if (EncryptData.validPassword(password, addUser.userpassword)) {
+        const token = jwtGen.generateToken(email, firstname, lastname, address);
+        reqResponses.handleSignupsuccess(200, `welcome ${firstname}`, token, addUser, res);
+      } else {
+        reqResponses.handleError(401, 'Incorrect password', res);
+      }
+    } catch (error) {
+      console.log(error);
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
 
+}
 export default Users;

@@ -25,7 +25,7 @@ const user = {
 };
 
 const usertoken = new Token.generateToken(user.email, user.firstname, user.lastname, user.address);
-const admintoken = new Token.generateToken('admin123@mail.com','admin', 'main', 'database');
+const admintoken = new Token.generateToken('admin123@mail.com', 'admin', 'main', 'database');
 const userid = 150;
 
 describe('/USERS auth', () => {
@@ -41,7 +41,7 @@ describe('/USERS auth', () => {
   });
 
   describe('/POST AUTHENTIACTION ', () => {
-    
+
     it('should fail with empty firstname field', (done) => {
       chai.request(app)
         .post('/api/v2/signup')
@@ -107,6 +107,63 @@ describe('/USERS auth', () => {
           done();
         });
     });
-
   });
+
+  describe('/POST login', () => {
+
+    it('should have user email', (done) => {
+      chai.request(app)
+        .post('/api/v2/login')
+        .send({
+          email: '',
+          password: 'qwerQ@qwerre123',
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          if (err) return done();
+          done();
+        });
+    });
+
+    it('should have user password ', (done) => {
+      chai.request(app)
+        .post('/api/v2/login')
+        .send({
+          email: 'test1@mail.com',
+          password: '',
+        })
+        .end((err, res) => {
+          res.should.have.status(400);
+          if (err) return done();
+          done();
+        });
+    });
+
+    it('should successfully log in user', (done) => {
+      chai.request(app)
+        .post('/api/v2/login')
+        .send({
+          email: 'test1@mail.com',
+          password: 'qwerQ@qwerre123',
+        }).end((err, res) => {
+          res.should.have.status(200);
+          if (err) return done();
+          done();
+        });
+    });
+
+    it('should check user password mismatch', (done) => {
+      chai.request(app)
+        .post('/api/v2/login')
+        .send({
+          email: 'test1@mail.com',
+          password: 'qwerQ@qwerre13',
+        }).end((err, res) => {
+          res.should.have.status(401);
+          if (err) return done();
+          done();
+        });
+    });
+  });
+  
 });

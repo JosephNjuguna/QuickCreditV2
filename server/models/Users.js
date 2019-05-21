@@ -7,21 +7,16 @@ class UsersModel {
   }
 
   static async findByEmail(email) {
-    try {
-      const sql = `SELECT * FROM users WHERE email='${email}'`;
-      const {rows}  = await Db.query(sql);
-      if (rows.length === 0) {
-        return false;
-      }
-      return true;
-      this.result;
-    } catch (error) {
-      console.log(error);
+    const sql = `SELECT * FROM users WHERE email='${email}'`;
+    const { rows } = await Db.query(sql);
+    if (rows.length === 0) {
+      return false;
     }
+    return true;
+    this.result;
   }
 
   async signup() {
-   try {
     const user = {
       email: this.payload.email,
       firstname: this.payload.firstname,
@@ -30,19 +25,27 @@ class UsersModel {
       address: this.payload.address,
       status: this.payload.status,
       isAdmin: this.payload.isAdmin,
-      signedupDate: this.payload.signedupDate
+      signedupDate: this.payload.signedupDate,
     };
-    
-    const values = [user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate];
-    const sql = 'INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) VALUES($1, $2, $3, $4, $5 ,$6 ,$7 ,$8) returning *';
+    const values = [ user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate];
+    const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) VALUES($1, $2, $3, $4, $5 ,$6 ,$7 ,$8) returning *';
     const { rows } = await Db.query(sql, values);
-    
     this.result = rows[0];
     return true;
-   } catch (error) {
-     console.log(error);
-   }
   }
+
+  static async login(email) {
+    const sql = `SELECT * FROM users WHERE email='${email}'`;
+    const {
+      rows
+    } = await Db.query(sql);
+    if (rows.length === 0) {
+      return false;
+    }
+    const result = rows[0];
+    return result;
+  }
+  
 }
 
 export default UsersModel;

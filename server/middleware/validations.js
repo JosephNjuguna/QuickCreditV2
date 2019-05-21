@@ -44,6 +44,27 @@ class Validations {
     }
   }
 
+  static validatelogin(req, res, next) {
+    try {
+      const {
+        email,
+        password
+      } = req.body;
+
+      let re;
+      if (email === '' || password === '' || !email || !password) {
+        return reqResponses.handleError(400, 'Ensure all fields are filled', res);
+      }
+      if (email) {
+        re = /(^[a-zA-Z0-9_.]+@[a-zA-Z0-9-]+\.[a-z]+$)/;
+        if (!re.test(email) || email === '') return reqResponses.handleError(400, 'enter valid email', res);
+      }
+      next();
+    } catch (error) {
+      reqResponses.handleError(error.toString(), 500, res);
+    }
+  }
+
   static async validatenewEmail(req, res, next) {
     try {
       const { email } = req.body;
@@ -57,5 +78,19 @@ class Validations {
     }
   }
 
+  static async validateexistingEmail(req, res, next) {
+    try {
+      const { email } = req.body;
+      const checkEmail = await Usermodel.login(email);
+      if (!checkEmail) {
+        return reqResponses.handleError(404, 'No email found', res);
+      }
+      next();
+    } catch (error) {
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
+
 }
+
 export default Validations;
