@@ -44,6 +44,7 @@ describe('/USERS auth', () => {
   });
 
   describe('/POST AUTHENTIACTION ', () => {
+    
     it('should fail with empty firstname field', (done) => {
       chai.request(app)
         .post('/api/v2/signup')
@@ -109,5 +110,6 @@ describe('/USERS auth', () => {
           done();
         });
     });
+
   });
 });
