@@ -1,6 +1,5 @@
 import reqResponses from '../helpers/Responses';
 import Usermodel from '../models/Users';
-import jwt from 'jsonwebtoken';
 
 class Validations {
   
