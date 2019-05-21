@@ -1,11 +1,9 @@
 import Usermodel from '../models/Users';
 import EncryptData from '../helpers/Encrypt';
 import userDate from '../helpers/Date';
-import Userid from '../helpers/Uid';
 import reqResponses from '../helpers/Responses';
-import Token from '../helpers/Token';
+import jwtGen from '../helpers/Jwt';
 
-const userid = Userid.uniqueId();
 const signedupDate = userDate.date();
 
 class Users {
@@ -17,11 +15,10 @@ class Users {
         lastname,
         address,
         email,
-        password,
+        password
       } = req.body;
       const hashedPassword = EncryptData.generateHash(password);
       const addUser = await new Usermodel({
-        userid,
         email,
         firstname,
         lastname,
@@ -34,7 +31,7 @@ class Users {
       if (!addUser.signup()) {
         reqResponses.handleError(409, 'Email already in use', res);
       }
-      const token = Token.genToken(email, userid, firstname, lastname, address);
+      const token = jwtGen.generateToken(email,firstname, lastname, address);
       return reqResponses.handleSignupsuccess(201, 'successfully created account', token, addUser.result, res);
     } catch (error) {
       reqResponses.handleError(500, error.toString(), res);
