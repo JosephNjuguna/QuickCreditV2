@@ -18,7 +18,6 @@ class DatabaseInit {
 
       this.queryUsers = `CREATE TABLE IF NOT EXISTS users(
           id serial PRIMARY KEY,
-          userid VARCHAR(100) NOT NULL,
           email VARCHAR(128) NOT NULL,
           firstname VARCHAR(128) NOT NULL,
           lastname VARCHAR(128) NOT NULL,
@@ -38,6 +37,7 @@ class DatabaseInit {
       this.requestLoan();
 
     } catch (error) {
+      return error.toString();
     }
   }
 
@@ -49,7 +49,7 @@ class DatabaseInit {
       }
       return await conn.query(sql);
     } catch (err) {
-      return err;
+      return err.toString();
     }
   }
 
@@ -77,7 +77,6 @@ class DatabaseInit {
       } = await this.query(sql);
       if (rows.length === 0) {
         const adminUser = {
-          userid: '123admin',
           email: process.env.email,
           firstname: 'admin',
           lastname: 'admin',
@@ -87,14 +86,14 @@ class DatabaseInit {
           isAdmin: true,
           signedupDate: userDate.date()
         };
-        const sql = 'INSERT INTO users (userid, email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8 , $9) returning *';
-        const value = [adminUser.userid, adminUser.email, adminUser.firstname, adminUser.lastname, adminUser.password, adminUser.address, adminUser.status, adminUser.isAdmin, adminUser.signedupDate];
+        const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8 , $9) returning *';
+        const value = [adminUser.email, adminUser.firstname, adminUser.lastname, adminUser.password, adminUser.address, adminUser.status, adminUser.isAdmin, adminUser.signedupDate];
         const {
           row
         } = this.query(sql, value);
       }
     } catch (error) {
-      console.log(error);
+      return error.toString();
     }
   }
 
