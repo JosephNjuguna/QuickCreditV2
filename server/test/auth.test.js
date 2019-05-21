@@ -3,8 +3,7 @@ import chaiHttp from 'chai-http';
 import userData from '../MockData/usermockData';
 import app from '../../app';
 import Db from '../db/db';
-import userId from '../helpers/Uid';
-import Token from '../helpers/Token';
+import Token from '../helpers/Jwt';
 import userDate from '../helpers/Date';
 import EncryptData from '../helpers/Encrypt';
 import dotenv from 'dotenv';
@@ -13,10 +12,8 @@ dotenv.config();
 chai.should();
 chai.use(chaiHttp);
 const hashedPassword = EncryptData.generateHash(process.env.password);
-const userIdtest = userId.uniqueId();
 
 const user = {
-  userid: userIdtest,
   email: 'test1@mail.com',
   firstname: 'test',
   lastname: 'test',
@@ -27,14 +24,14 @@ const user = {
   signedupDate: userDate.date(),
 };
 
-const usertoken = new Token.genToken(user.email, user.userid, user.firstname, user.lastname, user.address);
-const admintoken = new Token.genToken('admin123@mail.com', '123admin', 'admin', 'main', 'database');
+const usertoken = new Token.generateToken(user.email, user.firstname, user.lastname, user.address);
+const admintoken = new Token.generateToken('admin123@mail.com','admin', 'main', 'database');
 const userid = 150;
 
 describe('/USERS auth', () => {
   before('add user', async (done) => {
-    Db.query('INSERT INTO users (userid, email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 ,$9)',
-      [user.userid, user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
+    Db.query('INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 )',
+      [user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
     done();
   });
 
