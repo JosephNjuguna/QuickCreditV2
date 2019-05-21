@@ -54,9 +54,6 @@ class DatabaseInit {
   async initDb() {
     try {
       await this.query(this.queryUsers);
-      await this.query(this.queryLoans);
-      await this.query(this.queryPayments);
-      console.log("tables created");
     } catch (error) {
       console.log(error);
     }
