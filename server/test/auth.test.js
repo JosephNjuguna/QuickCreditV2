@@ -32,7 +32,7 @@ const admintoken = new Token.genToken('admin123@mail.com', '123admin', 'admin', 
 const userid = 150;
 
 describe('/USERS auth', () => {
-  before('add user', (done) => {
+  before('add user', async (done) => {
     Db.query('INSERT INTO users (userid, email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 ,$9)',
       [user.userid, user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
     done();
