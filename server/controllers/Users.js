@@ -1,11 +1,9 @@
 import Usermodel from '../models/Users';
 import EncryptData from '../helpers/Encrypt';
 import userDate from '../helpers/Date';
-import Userid from '../helpers/Uid';
 import reqResponses from '../helpers/Responses';
-import Token from '../helpers/Token';
+import Token from '../helpers/Jwt';
 
-const userid = Userid.uniqueId();
 const signedupDate = userDate.date();
 class Users {
   static async signup(req, res) {
@@ -15,11 +13,10 @@ class Users {
         lastname,
         address,
         email,
-        password,
+        password
       } = req.body;
       const hashedPassword = EncryptData.generateHash(password);
       const addUser = await new Usermodel({
-        userid,
         email,
         firstname,
         lastname,
@@ -32,7 +29,7 @@ class Users {
       if (!addUser.signup()) {
         reqResponses.handleError(409, 'Email already in use', res);
       }
-      const token = Token.genToken(email, userid, firstname, lastname, address);
+      const token = Token.generateToken(email, firstname, lastname, address);
       return reqResponses.handleSignupsuccess(201, 'successfully created account', token, addUser.result, res);
     } catch (error) {
       reqResponses.handleError(500, error.toString(), res);
@@ -44,11 +41,9 @@ class Users {
       const incomingEmail = req.body.email;
       const { password } = req.body;
       const addUser = await Usermodel.login(incomingEmail);
-      const {
-        email, userid, firstname, lastname, address,
-      } = addUser;
+      const { email, firstname, lastname, address} = addUser;
       if (EncryptData.validPassword(password, addUser.userpassword)) {
-        const token = Token.genToken(email, userid, firstname, lastname, address);
+        const token = Token.generateToken(email, firstname, lastname, address);
         reqResponses.handleSignupsuccess(200, `welcome ${firstname}`, token, addUser, res);
       } else {
         reqResponses.handleError(401, 'Incorrect password', res);
