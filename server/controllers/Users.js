@@ -3,6 +3,7 @@ import EncryptData from '../helpers/Encrypt';
 import userDate from '../helpers/Date';
 import reqResponses from '../helpers/Responses';
 import jwtGen from '../helpers/Jwt';
+import jwt from 'jsonwebtoken';
 
 const signedupDate = userDate.date();
 
@@ -49,6 +50,25 @@ class Users {
       } else {
         reqResponses.handleError(401, 'Incorrect password', res);
       }
+    } catch (error) {
+      console.log(error);
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
+
+  static async userProfile(req, res) {
+    try {
+      const token = req.headers.authorization.split(' ')[1];
+      const decoded = jwt.verify(token, process.env.JWT_KEY);
+      req.userData = decoded;
+
+      const userProfilemail = req.userData.email;
+      const userInfo = await Usermodel.findOne(userProfilemail);
+
+      if (!userInfo) {
+        return reqResponses.handleError(404, 'User id not found', res);
+      }
+      reqResponses.handleSuccess(200, 'welcome', userInfo.result, res);
     } catch (error) {
       console.log(error);
       reqResponses.handleError(500, error.toString(), res);
