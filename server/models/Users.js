@@ -30,8 +30,8 @@ class UsersModel {
       isAdmin: this.payload.isAdmin,
       signedupDate: this.payload.signedupDate,
     };
-    const values = [user.userid, user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate];
-    const sql = 'INSERT INTO users (userid, email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) VALUES($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 ,$9) returning *';
+    const values = [ user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate];
+    const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) VALUES($1, $2, $3, $4, $5 ,$6 ,$7 ,$8) returning *';
     const { rows } = await Db.query(sql, values);
     this.result = rows[0];
     return true;
