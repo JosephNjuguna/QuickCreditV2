@@ -8,9 +8,7 @@ class UsersModel {
 
   static async findByEmail(email) {
     const sql = `SELECT * FROM users WHERE email='${email}'`;
-    const {
-      rows
-    } = await Db.query(sql);
+    const { rows } = await Db.query(sql);
     if (rows.length === 0) {
       return false;
     }
@@ -20,7 +18,6 @@ class UsersModel {
 
   async signup() {
     const user = {
-      userid: this.payload.userid,
       email: this.payload.email,
       firstname: this.payload.firstname,
       lastname: this.payload.lastname,
@@ -48,7 +45,7 @@ class UsersModel {
     const result = rows[0];
     return result;
   }
-
+  
 }
 
 export default UsersModel;

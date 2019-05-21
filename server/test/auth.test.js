@@ -6,10 +6,12 @@ import Db from '../db/db';
 import Token from '../helpers/Jwt';
 import userDate from '../helpers/Date';
 import EncryptData from '../helpers/Encrypt';
+import dotenv from 'dotenv';
 
+dotenv.config();
 chai.should();
 chai.use(chaiHttp);
-const hashedPassword = EncryptData.generateHash('qwerQ@qwerre123');
+const hashedPassword = EncryptData.generateHash(process.env.password);
 
 const user = {
   email: 'test1@mail.com',
@@ -27,9 +29,9 @@ const admintoken = new Token.generateToken('admin123@mail.com', 'admin', 'main',
 const userid = 150;
 
 describe('/USERS auth', () => {
-  before('add user', (done) => {
-    const {rows} = Db.query('INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8)',
-      [ user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
+  before('add user', async (done) => {
+    Db.query('INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8 )',
+      [user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
     done();
   });
 
@@ -39,6 +41,7 @@ describe('/USERS auth', () => {
   });
 
   describe('/POST AUTHENTIACTION ', () => {
+
     it('should fail with empty firstname field', (done) => {
       chai.request(app)
         .post('/api/v2/signup')
@@ -162,4 +165,5 @@ describe('/USERS auth', () => {
         });
     });
   });
+  
 });

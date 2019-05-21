@@ -2,6 +2,7 @@ const env = process.env.NODE_ENV; // 'dev' or 'test'
 import dotenv from 'dotenv';
 
 dotenv.config();
+
 const dev = {
   db: process.env.DATABASE_URL,
 };

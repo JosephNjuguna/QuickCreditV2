@@ -1,7 +1,8 @@
 import EncryptData from '../helpers/Encrypt';
+import dotenv from 'dotenv';
 
-const hashedPassword = EncryptData.generateHash('qwerQ@qwerre123');
-
+dotenv.config();
+const hashedPassword = EncryptData.generateHash(process.env.password);
 const users = {
   user1: {
     email: 'test2@mail.com',

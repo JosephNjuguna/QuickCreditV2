@@ -10,6 +10,7 @@ const dbConfig = {
 };
 
 class DatabaseInit {
+
   constructor() {
     try {
       this.pool = new Pool(dbConfig);
@@ -27,12 +28,10 @@ class DatabaseInit {
           isAdmin VARCHAR(100)  NOT NULL,
           signedupDate VARCHAR(100)  NOT NULL
         )`;
-
       this.dropTables = 'DROP TABLE IF EXISTS users';
       this.deleteData = 'DELETE FROM users';
 
       this.initDb();
-
       this.createAdmin();
       this.requestLoan();
 
@@ -57,6 +56,7 @@ class DatabaseInit {
     try {
       await this.query(this.queryUsers);
     } catch (error) {
+      return error.toString();
     }
   }
 
