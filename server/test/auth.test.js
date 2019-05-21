@@ -28,7 +28,7 @@ const userid = 150;
 
 describe('/USERS auth', () => {
   before('add user', (done) => {
-    Db.query('INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8)',
+    const {rows} = Db.query('INSERT INTO users (email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5 ,$6 ,$7 ,$8)',
       [ user.email, user.firstname, user.lastname, user.password, user.address, user.status, user.isAdmin, user.signedupDate]);
     done();
   });
