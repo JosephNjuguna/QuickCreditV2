@@ -47,6 +47,17 @@ class UsersModel {
     return result;
   }
 
+  static async verifyUser(email, status) {
+    const sql = 'UPDATE users SET status = ($1) WHERE email = $2 returning *;';
+    const values = [status, email];
+    const {rows} = await Db.query(sql, values);
+    if (rows.length === 0) {
+      return false;
+    }
+    this.result = rows[0];
+    return true;
+  }
+
   static async findOne(email) {
     const sql = `SELECT * FROM users WHERE email='${email}'`;
     const { rows } = await Db.query(sql);
@@ -55,8 +66,7 @@ class UsersModel {
     }
     this.result = rows[0];
     return true;
-  }
-  
+  } 
 }
 
 export default UsersModel;
