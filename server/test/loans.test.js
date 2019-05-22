@@ -3,6 +3,8 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../../app';
 import Db from '../db/db';
+import total from '../helpers/Totalamount';
+import assert, { equal } from 'assert';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -102,6 +104,12 @@ describe('/LOAN', () => {
         });
     });
 
+  });
+  describe('/CALCULATE TOTAL AMOUNT',(done)=>{
+    it('should calculate the Total amount payable when user enters loan request', () => {
+      assert.equal(2300, total.totalAmountdata(2000).totalamounttoPay);
+      expect(total.totalAmountdata(2000)).to.be.an('Object');
+    });
   });
   
 })
