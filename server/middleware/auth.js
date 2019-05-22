@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
-import Token from '../helpers/Jwt';
 import dotenv from 'dotenv';
+import Token from '../helpers/Jwt';
 
 dotenv.config();
 
@@ -48,6 +48,5 @@ class AuthValidator {
 			});
 		}
 	}
-
 }
 export default AuthValidator;
