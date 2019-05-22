@@ -54,6 +54,7 @@ describe('/LOAN', () => {
         .set('authorization', `Bearer ${userToken}`)
         .send({
           '': 10000,
+          "tenor": 4
         })
         .end((err, res) => {
           res.should.have.status(400);
@@ -68,6 +69,7 @@ describe('/LOAN', () => {
         .set('authorization', `Bearer ${userToken}`)
         .send({
           amount: '',
+          tenor: 2
         })
         .end((err, res) => {
           res.should.have.status(400);
@@ -81,7 +83,8 @@ describe('/LOAN', () => {
         .post('/api/v2/requestloan')
         .set('authorization', `Bearer ${userToken}`)
         .send({
-          amount: 2000
+          amount: 200000,
+          tenor: 6
         })
         .end((err, res) => {
           res.should.have.status(200);
@@ -96,6 +99,7 @@ describe('/LOAN', () => {
         .set('authorization', `Bearer ${userToken}`)
         .send({
           amount: 10000,
+          tenor: 6
         })
         .end((err, res) => {
           res.should.have.status(409);
@@ -107,8 +111,8 @@ describe('/LOAN', () => {
   });
   describe('/CALCULATE TOTAL AMOUNT',(done)=>{
     it('should calculate the Total amount payable when user enters loan request', () => {
-      assert.equal(2300, total.totalAmountdata(2000).totalamounttoPay);
-      expect(total.totalAmountdata(2000)).to.be.an('Object');
+      assert.equal(2100, total.totalAmountdata(2000,4).totalamounttoPay);
+      expect(total.totalAmountdata(2000,5)).to.be.an('Object');
     });
   });
   

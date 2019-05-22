@@ -4,7 +4,7 @@ import Loanmodel from '../models/Loans';
 import jwt from 'jsonwebtoken';
 
 class Validations {
-  
+
   static validatesignup(req, res, next) {
     try {
       const {
@@ -69,7 +69,9 @@ class Validations {
 
   static async validatenewEmail(req, res, next) {
     try {
-      const { email } = req.body;
+      const {
+        email
+      } = req.body;
       const checkEmail = await Usermodel.findByEmail(email);
       if (checkEmail) {
         return reqResponses.handleError(409, 'Users email already exist', res);
@@ -82,7 +84,9 @@ class Validations {
 
   static async validateexistingEmail(req, res, next) {
     try {
-      const { email } = req.body;
+      const {
+        email
+      } = req.body;
       const checkEmail = await Usermodel.login(email);
       if (!checkEmail) {
         return reqResponses.handleError(404, 'No email found', res);
@@ -94,33 +98,44 @@ class Validations {
   }
 
   static async validateLoan(req, res, next) {
-		const loan = req.body.amount;		
-		if (!loan || loan === '') {
-			return reqResponses.handleError(400, 'loan field required', res);
-		}
-		if(loan){
-			const re = /([0-9]*[.])?[0-9]+/;
-			if (!re.test(loan)) reqResponses.handleError(400, 'enter amount in digits not strings', res);
-		}
-		if (parseFloat(loan, 10) < parseFloat(500, 10) || parseFloat(loan)  > 20000 ) {
-			return reqResponses.handleError(400, 'Enter correct loan amount, between 500sh - 20000sh', res);
-		}
-		next();
+    try {
+      const loan = req.body.amount;
+      const tenor = req.body.tenor;
+
+      if (!loan || !tenor ) {
+        return reqResponses.handleError(400, 'loan and tenor field required', res);
+      }
+      if (loan) {
+        console.log(loan);
+        const re = /([0-9]*[.])?[0-9]+/;
+        if (!re.test(loan)) reqResponses.handleError(404, 'enter amount in digits not strings', res);
+      }
+      if (tenor) {
+        console.log(tenor);
+        
+        const re = /^([1-9]|1[012])$/;
+        if (!re.test(tenor)) reqResponses.handleError(400, 'enter correct tenor, less than 12months and  in digits not strings', res);
+      }
+      next();
+    } catch (error) {
+      return error;
+    }
   }
-  
+
   static async validateexistingloanrequest(req, res, next) {
     try {
       const token = req.headers.authorization.split(' ')[1];
-			const decoded = jwt.verify(token, process.env.JWT_KEY);
+      const decoded = jwt.verify(token, process.env.JWT_KEY);
       req.userData = decoded;
-      
-      const useremail  = req.userData.email;
+
+      const useremail = req.userData.email;
       const checkEmail = await Loanmodel.findMail(useremail);
       if (checkEmail) {
         return reqResponses.handleError(409, 'You have a loan request', res);
       }
       next();
-    } catch (error) {      
+    } catch (error) {
+      console.log(error);
       reqResponses.handleError(500, error.toString(), res);
     }
   }

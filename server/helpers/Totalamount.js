@@ -1,37 +1,21 @@
-const interestRate = 15;
+const interestRate = 5;
 class totalamountCalculation {
-  static totalAmountdata(amount) {
-    let numberOfInstallments; let installmentAmount; let
-      totalamounttoPay;
+  static totalAmountdata(amount = null, tenor = null) {
+    let installmentAmount, totalamounttoPay;
     const totalAmount = ((interestRate / 100) * amount) + amount;
-    if (totalAmount <= 4000) {
-      numberOfInstallments = 4;
-    } else if (totalAmount > 4000 && totalAmount <= 9000) {
-      numberOfInstallments = 6;
-    } else if (totalAmount > 9000 && totalAmount <= 12000) {
-      numberOfInstallments = 8;
-    } else if (totalAmount > 12000 && totalAmount <= 15000) {
-      numberOfInstallments = 10;
-    } else if (totalAmount > 15000 && totalAmount <= 18000) {
-      numberOfInstallments = 12;
-    } else if (totalAmount > 18000 && totalAmount <= 20000) {
-      numberOfInstallments = 14;
-    } else if (totalAmount > 20000 && totalAmount <= 24000) {
-      numberOfInstallments = 16;
-    }
-    if (totalAmount % numberOfInstallments !== 0) {
-      const remainder = totalAmount % numberOfInstallments;
-      const remaining = numberOfInstallments - remainder;
+    if (totalAmount % tenor !== 0) {
+      const remainder = totalAmount % tenor;
+      const remaining = tenor - remainder;
       totalamounttoPay = totalAmount + remaining;
     } else {
       totalamounttoPay = totalAmount;
     }
-    installmentAmount = totalamounttoPay / numberOfInstallments;
+    installmentAmount = totalamounttoPay / tenor;
     return {
-      numberOfInstallments,
+      tenor,
       installmentAmount,
       totalamounttoPay,
-      interestRate,
+      interestRate
     };
   }
 }
