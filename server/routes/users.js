@@ -8,5 +8,6 @@ const router = express.Router();
 router.post('/signup', validate.validatesignup, validate.validatenewEmail, controllers.signup);
 router.post('/login', validate.validatelogin, validate.validateexistingEmail, controllers.login);
 router.patch('/user/:email/verify', Auth.checkAdmin, controllers.verifyUser);
+router.get('/profile', Auth.checkUser, controllers.userProfile);
 
 export default router;

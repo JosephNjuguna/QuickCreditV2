@@ -1,6 +1,7 @@
 import Db from '../db/db';
 
 class UsersModel {
+
   constructor(payload = null) {
     this.payload = payload;
     this.result = null;
@@ -56,7 +57,16 @@ class UsersModel {
     this.result = rows[0];
     return true;
   }
-  
+
+  static async findOne(email) {
+    const sql = `SELECT * FROM users WHERE email='${email}'`;
+    const { rows } = await Db.query(sql);
+    if (rows.length === 0) {
+      return false;
+    }
+    this.result = rows[0];
+    return true;
+  } 
 }
 
 export default UsersModel;
