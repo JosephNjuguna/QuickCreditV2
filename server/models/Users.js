@@ -45,6 +45,17 @@ class UsersModel {
     const result = rows[0];
     return result;
   }
+
+  static async verifyUser(email, status) {
+    const sql = 'UPDATE users SET status = ($1) WHERE email = $2 returning *;';
+    const values = [status, email];
+    const {rows} = await Db.query(sql, values);
+    if (rows.length === 0) {
+      return false;
+    }
+    this.result = rows[0];
+    return true;
+  }
   
 }
 

@@ -55,5 +55,21 @@ class Users {
     }
   }
 
+  static async verifyUser(req, res) {
+    try {
+      const { email } = req.params;
+      const { status } = req.body;
+
+      const userVerifaction = await Usermodel.verifyUser(email, status);
+
+      if (!userVerifaction) {
+        return reqResponses.handleError(404, 'User email not found', res);
+      }
+      reqResponses.handleSuccess(200, 'user verified successfully', userVerifaction.result, res);
+    } catch (error) {
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
+
 }
 export default Users;
