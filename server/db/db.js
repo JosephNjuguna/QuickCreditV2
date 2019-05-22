@@ -28,12 +28,25 @@ class DatabaseInit {
           isAdmin VARCHAR(100)  NOT NULL,
           signedupDate VARCHAR(100)  NOT NULL
         )`;
+        this.queryLoans = `CREATE TABLE IF NOT EXISTS loans(
+          id serial PRIMARY KEY,
+          usermail VARCHAR(20) NOT NULL,
+          firstname VARCHAR(20) NOT NULL,
+          lastname VARCHAR(20) NOT NULL,
+          requestedOn VARCHAR(28) NOT NULL,
+          status VARCHAR(10) NOT NULL,
+          repaid VARCHAR(10) NOT NULL,
+          tenor VARCHAR(12) NOT NULL,
+          principalAmount VARCHAR(10) NOT NULL,
+          paymentInstallment VARCHAR(10)  NOT NULL,
+          totalAmounttopay VARCHAR(28) NOT NULL,
+          intrestRate VARCHAR(28) NOT NULL
+        )`;
       this.dropTables = 'DROP TABLE IF EXISTS users';
       this.deleteData = 'DELETE FROM users';
 
       this.initDb();
       this.createAdmin();
-      this.requestLoan();
 
     } catch (error) {
       return error.toString();
@@ -55,6 +68,7 @@ class DatabaseInit {
   async initDb() {
     try {
       await this.query(this.queryUsers);
+      await this.query(this.queryLoans);
     } catch (error) {
       return error.toString();
     }
