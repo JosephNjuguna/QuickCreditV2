@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 const signedupDate = userDate.date();
 
 class Users {
+  
   static async signup(req, res) {
     try {
       const {
@@ -56,6 +57,22 @@ class Users {
     }
   }
 
+  static async verifyUser(req, res) {
+    try {
+      const { email } = req.params;
+      const { status } = req.body;
+
+      const userVerifaction = await Usermodel.verifyUser(email, status);
+
+      if (!userVerifaction) {
+        return reqResponses.handleError(404, 'User email not found', res);
+      }
+      reqResponses.handleSuccess(200, 'user verified successfully', userVerifaction.result, res);
+    } catch (error) {
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
+
   static async userProfile(req, res) {
     try {
       const token = req.headers.authorization.split(' ')[1];
@@ -70,7 +87,6 @@ class Users {
       }
       reqResponses.handleSuccess(200, 'welcome', userInfo.result, res);
     } catch (error) {
-      console.log(error);
       reqResponses.handleError(500, error.toString(), res);
     }
   }
