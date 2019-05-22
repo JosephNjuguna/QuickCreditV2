@@ -75,5 +75,17 @@ class Users {
     }
   }
 
+  static async allUsers(req, res) {
+    try {
+      const allUserdata = await new Usermodel();
+      if (!allUserdata.allUsers()) {
+        reqResponses.handleError(404, 'No Users record found', res);
+      }
+      reqResponses.handleSuccess(200, 'All users record', allUserdata.result, res);
+    } catch (error) {
+      reqResponses.handleError(500, error.toString(), res);
+    }
+  }
+
 }
 export default Users;

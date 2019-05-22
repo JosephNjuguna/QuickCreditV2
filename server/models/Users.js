@@ -56,6 +56,18 @@ class UsersModel {
     this.result = rows[0];
     return true;
   }
+
+  async allUsers() {
+    const sql = 'SELECT * FROM users';
+    const {
+      rows
+    } = await Db.query(sql);
+    if (rows) {
+      this.result = rows;
+      return true;
+    }
+    return false;
+  }
   
 }
 
