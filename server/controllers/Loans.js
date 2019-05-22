@@ -30,6 +30,18 @@ class Loans {
 			reqResponses.handleError(500, error.toString(), res);
 		}
 	}
+
+	static async allLoanapplications(req, res) {
+		try {
+			const loanData = await Models.allLoanapplications();
+			if (!loanData) {
+				return reqResponses.handleError(404, 'No records found', res);
+			}
+			reqResponses.handleSuccess(200, 'Loan Applications Records', loanData, res);
+		} catch (error) {
+			reqResponses.handleError(500, error.toString(), res);
+		}
+	}
 	
 }
 

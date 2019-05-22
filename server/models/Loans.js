@@ -34,5 +34,16 @@ class LoanModel {
     return result;
   }
 
+  static async allLoanapplications() {
+    const {
+      rows
+    } = await Db.query('SELECT * FROM loans');
+    if (rows.length == 0) {
+      return false;
+    }
+    return true
+  }
+
+
 }
 export default LoanModel;

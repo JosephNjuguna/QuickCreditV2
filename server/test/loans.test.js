@@ -24,6 +24,7 @@ describe('/LOAN', () => {
       firstname: 'main',
       lastname: 'admin',
       address: 'database',
+      isAdmin: true
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -34,6 +35,7 @@ describe('/LOAN', () => {
       firstname: 'Joseph',
       lastname: 'Njuguna',
       address: 'Kenya',
+      isAdmin: false
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -115,5 +117,19 @@ describe('/LOAN', () => {
       expect(total.totalAmountdata(2000,5)).to.be.an('Object');
     });
   });
-  
+
+  describe('/GET admin', () => {
+    
+		it('should get all loan applications', (done) => {
+			chai.request(app)
+				.get('/api/v2/loans')
+				.set('authorization', `Bearer ${adminToken}`)
+				.end((err, res) => {
+					res.should.have.status(200);
+					if (err) return done();
+					done();
+				});
+    });
+    
+	});
 })
