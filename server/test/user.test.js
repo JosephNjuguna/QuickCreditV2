@@ -26,16 +26,15 @@ const user = {
 };
 
 let userToken, adminToken, wrongemailToken;
-const wrongId = 134243;
 
 describe('/USER DATA', () => {
   before('add user', (done) => {
     adminToken = jwt.sign({
       email: 'admin123@gmail.com',
-      userid: '123admin',
       firstname: 'main',
       lastname: 'admin',
-      address: 'database'
+      address: 'database',
+      isAdmin: true
     }, process.env.JWT_KEY, {
       expiresIn: '1h'
     });
@@ -44,7 +43,8 @@ describe('/USER DATA', () => {
       email: 'test1@mail.com',
       firstname: 'Joseph',
       lastname: 'Njuguna',
-      address: 'Kenya'
+      address: 'Kenya',
+      isAdmin: false
     }, process.env.JWT_KEY, {
       expiresIn: '1h'
     });
@@ -53,7 +53,8 @@ describe('/USER DATA', () => {
       email: 'test1sddd@mail.com',
       firstname: 'Joseph',
       lastname: 'Njuguna',
-      address: 'Kenya'
+      address: 'Kenya',
+      isAdmin: false
     }, process.env.JWT_KEY, {
       expiresIn: '1h'
     });

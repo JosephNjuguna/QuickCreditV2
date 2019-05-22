@@ -21,7 +21,8 @@ class AuthValidator {
 					});
 				}
 			}
-		} catch (e) {			
+		} catch (e) {	
+			console.log(e);
 			res.status(401).json({
 				status: '401',
 				message: 'Auth failed',
@@ -47,6 +48,6 @@ class AuthValidator {
 			});
 		}
 	}
-	
+
 }
 export default AuthValidator;
