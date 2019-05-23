@@ -142,4 +142,29 @@ describe('/USER DATA', () => {
     });
 
   });
+
+  describe('/GET all users', () => {
+    it('should not  return all users if not admin', (done) => {
+      chai.request(app)
+        .get('/api/v2/users')
+        .set('Authorization', `Bearer ${userToken}`)
+        .end((err, res) => {
+          if (err) return done();
+          res.should.have.status(403);
+          done();
+        });
+    });
+
+    it('should return all users', (done) => {
+      chai.request(app)
+        .get('/api/v2/users')
+        .set('Authorization', `Bearer ${adminToken}`)
+        .end((err, res) => {
+          if (err) return done();
+          res.should.have.status(200);
+          done();
+        });
+    });
+  });
+  
 });
