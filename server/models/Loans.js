@@ -33,6 +33,15 @@ class LoanModel {
     const result = rows[0];
     return result;
   }
+  static async oneLoanapplication(userloanId) {
+    const sql = `SELECT * FROM loans WHERE id = ($1)`;
+    const values = [userloanId];
+    const {rows}  = await Db.query(sql, values);
+    if (rows.length === 0) {
+      return false;
+    }
+    return true;
+  }
 
   static async loanAccepted(status, loanid){
     const rowData = 'UPDATE loans SET status = ($1) WHERE loanid = ($2) returning *;';
