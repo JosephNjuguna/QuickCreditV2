@@ -24,6 +24,7 @@ describe('/LOAN', () => {
       firstname: 'main',
       lastname: 'admin',
       address: 'database',
+      isAdmin: true
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -34,6 +35,7 @@ describe('/LOAN', () => {
       firstname: 'Joseph',
       lastname: 'Njuguna',
       address: 'Kenya',
+      isAdmin: false
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -109,11 +111,25 @@ describe('/LOAN', () => {
     });
 
   });
+  
   describe('/CALCULATE TOTAL AMOUNT',(done)=>{
     it('should calculate the Total amount payable when user enters loan request', () => {
       assert.equal(2100, total.totalAmountdata(2000,4).totalamounttoPay);
       expect(total.totalAmountdata(2000,5)).to.be.an('Object');
     });
   });
-  
+
+  describe('/GET admin get loans by their status', (done)=>{
+    it('should get all loans fully paid', (done) => {
+      chai.request(app)
+        .get('/api/v2/loans?status=pending&repaid=false')
+        .set('authorization', `Bearer ${adminToken}`)
+        .end((err, res) => {
+          res.should.have.status(200);
+          if (err) return done();
+          done();
+        });
+    });
+  })
+
 })
