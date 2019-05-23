@@ -43,6 +43,18 @@ class Loans {
 			}
 			reqResponses.handleSuccess(200, 'Loan Applications Records', loanData, res); 
 		} catch (error) {
+      	reqResponses.handleError(500, error.toString(), res);
+		}
+  }
+	static async loanRepaidstatus(req, res) {
+		try {
+			const { status,repaid } = req.query;
+			const loanstatus = await Models.loanRepaidstatus(status, repaid);
+			if (!loanstatus) {
+				return reqResponses.handleError(404, 'No loans records found', res);
+			}
+			reqResponses.handleSuccess(200, 'loan status', loanstatus.result, res);
+		} catch (error) {
 			reqResponses.handleError(500, error.toString(), res);
 		}
 	}
