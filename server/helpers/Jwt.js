@@ -13,6 +13,7 @@ class Token {
 
   static checkToken(token, res) {
     if (!token || token === '') {
+      console.log(token);
       return reqResponses.handleError(400, 'Token required', res);
     }
     return true;
