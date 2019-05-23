@@ -137,6 +137,18 @@ class Validations {
     }
   }
 
+  static validateID(req, res, next) {
+    try {
+      const { id } = req.params;
+      const re = /([0-9]*[.])?[0-9]+/;
+      if (id) {
+        if (!re.test(id)) reqResponses.handleError(404, 'enter an id in digits not letters', res);
+      }
+      next();
+    } catch (error) {
+      reqResponses.handleError(error.toString(), 500, res);
+    }
+  }
 }
 
 export default Validations;
