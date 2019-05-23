@@ -31,6 +31,21 @@ class Loans {
 		}
 	}
 	
+	static async acceptloanapplication(req, res) {
+		try {
+			const userloanId = req.params.loan_id;
+			const status = req.body.status;
+			const paidOn = requestedDate;			
+			const acceptLoan = await Models.acceptloanapplication(userloanId, status, paidOn);
+			if (!acceptLoan) {
+				return reqResponses.handleError(404, 'Loan id not found', res);
+			}
+			reqResponses.handleSuccess(200, 'loan accepted successfully', acceptLoan, res);
+		} catch (error) {
+			reqResponses.handleError(500, error.toString(), res);
+		}
+	}
+	
 }
 
 export default Loans;

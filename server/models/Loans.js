@@ -34,5 +34,12 @@ class LoanModel {
     return result;
   }
 
+  static async loanAccepted(status, loanid){
+    const rowData = 'UPDATE loans SET status = ($1) WHERE loanid = ($2) returning *;';
+    const valuesUpdate = [status, loanid];
+    const { rows } = await Db.query(rowData, valuesUpdate);
+    return true;
+  }
+
 }
 export default LoanModel;
