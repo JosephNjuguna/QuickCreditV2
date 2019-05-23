@@ -43,7 +43,7 @@ class LoanModel {
     }
     return true
   }
-
+  
   static async loanAccepted(status, loanid){
     const rowData = 'UPDATE loans SET status = ($1) WHERE loanid = ($2) returning *;';
     const valuesUpdate = [status, loanid];

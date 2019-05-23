@@ -13,10 +13,14 @@ class Loans {
 			const decoded = jwt.verify(token, process.env.JWT_KEY);
 			req.userData = decoded;
 			const requestedloan = req.body.amount;
-			const tenor = req.body.tenor;			
-			const { firstname, lastname, email } = req.userData;
+			const tenor = req.body.tenor;
+			const {
+				firstname,
+				lastname,
+				email
+			} = req.userData;
 			const dateRequested = requestedDate;
-			
+
 			const loanModel = await Models.requestLoan({
 				requestedloan,
 				tenor,
@@ -37,10 +41,9 @@ class Loans {
 			if (!loanData) {
 				return reqResponses.handleError(404, 'No records found', res);
 			}
-			reqResponses.handleSuccess(200, 'Loan Applications Records', loanData, res);
-		}catch(error){
+			reqResponses.handleSuccess(200, 'Loan Applications Records', loanData, res); 
+		} catch (error) {
 			reqResponses.handleError(500, error.toString(), res);
-
 		}
 	}
 
@@ -59,12 +62,12 @@ class Loans {
 			reqResponses.handleError(500, error.toString(), res);
 		}
 	}
-	
+
 	static async acceptloanapplication(req, res) {
 		try {
 			const userloanId = req.params.loan_id;
 			const status = req.body.status;
-			const paidOn = requestedDate;			
+			const paidOn = requestedDate;
 			const acceptLoan = await Models.acceptloanapplication(userloanId, status, paidOn);
 			if (!acceptLoan) {
 				return reqResponses.handleError(404, 'Loan id not found', res);
@@ -74,7 +77,7 @@ class Loans {
 			reqResponses.handleError(500, error.toString(), res);
 		}
 	}
-	
+
 }
 
 export default Loans;
