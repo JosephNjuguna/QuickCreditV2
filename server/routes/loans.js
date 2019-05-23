@@ -7,5 +7,6 @@ const route = express.Router();
 
 route.post('/requestloan', checkAuth.checkUser, validation.validateLoan, validation.validateexistingloanrequest, loans.requestLoan);
 route.get('/loan/:loan_id', checkAuth.checkAdmin,  validation.validateID, loans.oneLoanapplication);
+route.patch('/loan/:loan_id', checkAuth.checkAdmin, loans.acceptloanapplication);
 
 export default route;
