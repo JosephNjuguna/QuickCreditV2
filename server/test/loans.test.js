@@ -115,7 +115,44 @@ describe('/LOAN', () => {
 					done();
 				});
 		});
+	});
 
+	describe('/CALCULATE TOTAL AMOUNT', (done) => {
+
+		it('should calculate the Total amount payable when user enters loan request', () => {
+			assert.equal(2100, total.totalAmountdata(2000, 4).totalamounttoPay);
+			expect(total.totalAmountdata(2000, 5)).to.be.an('Object');
+		});
+
+	});
+
+	describe('/GET admin', () => {
+
+		it('should get all loan applications', (done) => {
+			chai.request(app)
+				.get('/api/v2/loans')
+				.set('authorization', `Bearer ${adminToken}`)
+				.end((err, res) => {
+					res.should.have.status(200);
+					if (err) return done();
+					done();
+				});
+		});
+
+		it('should check user has loan request available', (done) => {
+			chai.request(app)
+				.post('/api/v2/requestloan')
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: 10000,
+					tenor: 6
+				})
+				.end((err, res) => {
+					res.should.have.status(409);
+					if (err) return done();
+					done();
+				});
+		});
 	});
 
 	describe('/CALCULATE TOTAL AMOUNT', (done) => {
@@ -136,6 +173,20 @@ describe('/LOAN', () => {
 					done();
 				});
 		});
+
+		it('should check a loan id is not available', (done) => {
+			chai.request(app)
+				.get('/api/v2/loan/30000')
+				.set('authorization', `Bearer ${adminToken}`)
+				.send({
+					status: 'rejected'
+				})
+				.end((err, res) => {
+					res.should.have.status(404);
+					if (err) return done();
+					done();
+				});
+		});
 		it('should check a loan id is not available', (done) => {
 			chai.request(app)
 				.get('/api/v2/loan/30000')
@@ -150,4 +201,4 @@ describe('/LOAN', () => {
 				});
 		});
 	});
-})
+});

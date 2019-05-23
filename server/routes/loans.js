@@ -6,6 +6,7 @@ import checkAuth from '../middleware/auth';
 const route = express.Router();
 
 route.post('/requestloan', checkAuth.checkUser, validation.validateLoan, validation.validateexistingloanrequest, loans.requestLoan);
+route.get('/loans', checkAuth.checkAdmin, loans.allLoanapplications);
 route.get('/loans', checkAuth.checkAdmin, loans.loanRepaidstatus);
 route.get('/loan/:loan_id', checkAuth.checkAdmin,  validation.validateID, loans.oneLoanapplication);
 route.get('/viewloanrequest', checkAuth.checkUser, loans.userloanStatus);

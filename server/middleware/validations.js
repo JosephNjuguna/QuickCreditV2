@@ -106,13 +106,10 @@ class Validations {
         return reqResponses.handleError(400, 'loan and tenor field required', res);
       }
       if (loan) {
-        console.log(loan);
         const re = /([0-9]*[.])?[0-9]+/;
         if (!re.test(loan)) reqResponses.handleError(404, 'enter amount in digits not strings', res);
       }
-      if (tenor) {
-        console.log(tenor);
-        
+      if (tenor) {        
         const re = /^([1-9]|1[012])$/;
         if (!re.test(tenor)) reqResponses.handleError(400, 'enter correct tenor, less than 12months and  in digits not strings', res);
       }
