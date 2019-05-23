@@ -24,6 +24,7 @@ describe('/LOAN', () => {
       firstname: 'main',
       lastname: 'admin',
       address: 'database',
+      isAdmin: true
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -34,6 +35,7 @@ describe('/LOAN', () => {
       firstname: 'Joseph',
       lastname: 'Njuguna',
       address: 'Kenya',
+      isAdmin: false
     },
     process.env.JWT_KEY, {
       expiresIn: '1h',
@@ -43,6 +45,8 @@ describe('/LOAN', () => {
 
   after('after all test', (done) => {
     Db.query('DELETE FROM loans');
+    Db.query('DROP TABLE IF EXISTS loans');
+    console.log('after');
     done();
   });
 
@@ -114,6 +118,18 @@ describe('/LOAN', () => {
       assert.equal(2100, total.totalAmountdata(2000,4).totalamounttoPay);
       expect(total.totalAmountdata(2000,5)).to.be.an('Object');
     });
+  });
+
+  it('should check a loan id is not available', (done) => {
+    chai.request(app)
+      .get('/api/v2/loan/30000')
+      .set('authorization', `Bearer ${adminToken}`)
+      .send({ status: 'rejected' })
+      .end((err, res) => {
+        res.should.have.status(404);
+        if (err) return done();
+        done();
+      });
   });
   
 })
