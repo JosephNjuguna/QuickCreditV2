@@ -12,11 +12,11 @@ class Loans {
 			const decoded = jwt.verify(token, process.env.JWT_KEY);
 			req.userData = decoded;
 			const requestedloan = req.body.amount;
-			const { tenor } = req.body;
+			const tenor = req.body.tenor;
 			const {
 				firstname,
 				lastname,
-				email,
+				email
 			} = req.userData;
 			const dateRequested = requestedDate;
 
@@ -26,14 +26,52 @@ class Loans {
 				firstname,
 				lastname,
 				email,
-				dateRequested,
+				dateRequested
 			});
 			return reqResponses.handleSuccess(200, 'Loan request successful', loanModel, res);
 		} catch (error) {
-			return reqResponses.handleError(500, error.toString(), res);
+			reqResponses.handleError(500, error.toString(), res);
 		}
 	}
 
+	static async allLoanapplications(req, res) {
+		try {
+			const loanData = await Models.allLoanapplications();
+			if (!loanData) {
+				return reqResponses.handleError(404, 'No records found', res);
+			}
+			reqResponses.handleSuccess(200, 'Loan Applications Records', loanData, res); 
+		} catch (error) {
+      	reqResponses.handleError(500, error.toString(), res);
+		}
+  }
+  
+	static async loanRepaidstatus(req, res) {
+		try {
+			const { status,repaid } = req.query;
+			const loanstatus = await Models.loanRepaidstatus(status, repaid);
+			if (!loanstatus) {
+				return reqResponses.handleError(404, 'No loans records found', res);
+			}
+			reqResponses.handleSuccess(200, 'loan status', loanstatus.result, res);
+		} catch (error) {
+			reqResponses.handleError(500, error.toString(), res);
+		}
+	}
+
+	static async oneLoanapplication(req, res) {
+		try {
+			const userloanId = req.params.loan_id;
+			const oneloanData = await Models.oneLoanapplication(userloanId);
+			if (!oneloanData) {
+				return reqResponses.handleError(404, 'Loan id not found', res);
+			}
+			reqResponses.handleSuccess(200, 'success', oneloanData, res);
+		} catch (error) {
+			console.log(error);
+    }
+  }
+  
 	static async userloanStatus(req, res) {
 		try {
 			const token = req.headers.authorization.split(' ')[1];
@@ -91,6 +129,10 @@ class Loans {
 
 			const paymentHistory = await Models.repaymentHistory(email, userloanId);
 			if (!paymentHistory) {
+			const status = req.body.status;
+			const paidOn = requestedDate;
+			const acceptLoan = await Models.acceptloanapplication(userloanId, status, paidOn);
+			if (!acceptLoan) {
 				return reqResponses.handleError(404, 'Loan id not found', res);
 			}
 			return reqResponses.handleSuccess(200, 'Loan Repayment Record ', paymentHistory.result, res);
