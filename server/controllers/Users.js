@@ -68,12 +68,12 @@ class Users {
 			req.userData = decoded;
 
 			const userProfilemail = req.userData.email;
-			const userInfo = await Usermodel.findOne(userProfilemail);
+			const userInfo = await Usermodel.findprofile(userProfilemail);
 
 			if (!userInfo) {
 				return reqResponses.handleError(404, 'User id not found', res);
 			}
-			return reqResponses.handleSuccess(200, 'welcome', userInfo.result, res);
+			return reqResponses.handleSuccess(200, 'welcome', userInfo, res);
 		} catch (error) {
 			return reqResponses.handleError(500, error.toString(), res);
 		}
