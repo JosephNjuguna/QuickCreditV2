@@ -7,7 +7,7 @@ income earners.
 ## BADGES.
 [![Coverage Status](https://coveralls.io/repos/github/JosephNjuguna/QuickCredit/badge.svg)](https://coveralls.io/github/JosephNjuguna/QuickCredit)
 [![Build Status](https://travis-ci.org/JosephNjuguna/QuickCredit.svg?branch=develop)](https://travis-ci.org/JosephNjuguna/QuickCredit)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/24445c4a4139ec4d457d/maintainability)](https://codeclimate.com/github/JosephNjuguna/QuickCredit/maintainability)
 
 ## API ENDPOINTS
 
