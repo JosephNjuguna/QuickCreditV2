@@ -29,7 +29,7 @@ describe('/LOAN', () => {
 			firstname: 'main',
 			lastname: 'admin',
 			address: 'database',
-			isAdmin: true,
+			admin: true,
 		},
 		process.env.JWT_KEY, {
 			expiresIn: '1h',
@@ -40,7 +40,7 @@ describe('/LOAN', () => {
 			firstname: 'Joseph',
 			lastname: 'Njuguna',
 			address: 'Kenya',
-			isAdmin: false,
+			admin: false,
 		},
 		process.env.JWT_KEY, {
 			expiresIn: '1h',
