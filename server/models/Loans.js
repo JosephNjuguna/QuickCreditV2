@@ -61,7 +61,8 @@ class LoanModel {
 		const sqlFirst = 'INSERT INTO payments(loanid, usermail, totalAmounttopay, installmentAmount,balance, paymentNo, paidOn ) VALUES($1, $2, $3, $4, $5 ,$6 ,$7) returning *;';
 		const valuesFirst = [latestPayment.loanid, latestPayment.usermail, latestPayment.totalamounttopay, latestPayment.installmentamount, balance, paymentNo, datepaid];
 		const { rows } = await Db.query(sqlFirst, valuesFirst);
-		this.result = 'continue paying your loan';
+		const result = rows[0];
+		return result;
 	}
 
 	async paymentdata(amount, loaniddetail, datepaid) {
@@ -74,7 +75,7 @@ class LoanModel {
 		const paymentNo = paymentsCount + 1;
 		if (rows.length === 0) {
 			this.result = 'kindly wait for your application to be accepted';
-			return false;
+			return result;
 		}
 		if (latestPayment.balance === 0 || latestPayment.balance < 0) {
 			const sql = 'UPDATE loans SET repaid = ($1) WHERE id = ($2) returning *;';
@@ -83,7 +84,7 @@ class LoanModel {
 				rows,
 			} = await Db.query(sql, values);
 			this.result = 'your loan is fully paid';
-			return true;
+			return result;
 		}
 		if (rows.length === 1) {
 			const payment = rows[0];
@@ -99,18 +100,18 @@ class LoanModel {
 				};
 				const sqlFirst = 'INSERT INTO payments(loanid, usermail, totalAmounttopay, installmentAmount, balance, paymentNo, paidOn ) VALUES($1, $2, $3, $4, $5 ,$6 ,$7) returning *;';
 				const valuesFirst = [loaniddetail, rows.usermail, amount, rows.installmentsamount, newPayment.balance, newPayment.paymentNo, datepaid];
-				this.result = newPayment;
-				return true;
+				const { rows } =  await Db.query(sqlFirst, valuesFirst);
+				const result = rows[0];
+				return result;
 			}
 			const sqlFirst = 'INSERT INTO payments(loanid, usermail, totalAmounttopay, installmentAmount, balance, paymentNo, paidOn ) VALUES($1, $2, $3, $4, $5 ,$6 ,$7) returning *;';
 			const valuesFirst = [loaniddetail, rows.usermail, amount, rows.installmentsamount, balance, 2, datepaid];
-			const {
-				rows,
-			} = await Db.query(sqlFirst, valuesFirst);
-			this.result = 'second loan payment';
-			return true;
+			const { rows } = await Db.query(sqlFirst, valuesFirst);
+			const result = rows[0];
+			return result;
 		}
 		const loancontinous = await this.continuedpayment(paymentNo, amount, balance, latestPayment, datepaid);
+		return loancontinous;
 	}
 
 	async payloan() {
@@ -118,12 +119,11 @@ class LoanModel {
 		const loanid = parseFloat(this.payload.userloanId);
 		const datepaid = parseFloat(this.payload.paidOn);
 		const sql = `SELECT * FROM loans WHERE id ='${loanid}' AND usermail = '${this.payload.email}'`;
-		const {
-			rows,
-		} = await Db.query(sql);
+		const { rows } = await Db.query(sql);
 		const loaniddetail = rows[0].id;
 		if (rows) {
 			const paymentFunc = await this.paymentdata(amount, loaniddetail, datepaid);
+			return paymentFunc;
 		}
 		this.result = 'There was an error paying your loan';
 		return false;

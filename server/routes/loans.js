@@ -13,6 +13,6 @@ route.patch('/loan/:loan_id', checkAuth.checkAdmin, validation.validateFindLoan,
 route.post('/payloan/:loan_id', checkAuth.checkUser, validation.validatePayloan, validation.validateFindLoan, loans.payloan);
 route.get('/paymenthistory/:loan_id', checkAuth.checkUser, loans.repaymentHistory);
 route.get('/payments', checkAuth.checkAdmin, loans.allLoanpayments);
-route.get('/loans', checkAuth.checkAdmin, loans.loanRepaidstatus);
+route.get('/loans', checkAuth.checkAdmin, validation.validateStatus, loans.loanRepaidstatus);
 
 export default route;

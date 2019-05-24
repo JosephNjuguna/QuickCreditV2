@@ -22,7 +22,6 @@ class Users {
 			const token = jwtGen.generateToken(email, firstname, lastname, address);
 			return reqResponses.handleSignupsuccess(201, 'successfully created account', token, addUser, res);
 		} catch (error) {
-			console.log(error);
 			return reqResponses.handleError(500, error.toString(), res);
 		}
 	}
@@ -32,11 +31,16 @@ class Users {
 			const incomingEmail = req.body.email;
 			const { password } = req.body;
 			const addUser = await Usermodel.login(incomingEmail);
-			const {
-				email, firstname, lastname, address,
-			} = addUser;
+			const { email, firstname, lastname, address, isadmin } = addUser;
+			console.log(addUser);
+			let admin;
+			if (isadmin === 'false') {
+				admin = false;
+			} else if (isadmin === 'true') {
+				admin = true;
+			}
 			if (EncryptData.validPassword(password, addUser.userpassword)) {
-				const token = jwtGen.generateToken(email, firstname, lastname, address);
+				const token = jwtGen.generateToken(email, firstname, lastname, address, admin );
 				return reqResponses.handleSignupsuccess(200, `welcome ${firstname}`, token, addUser, res);
 			}
 			return reqResponses.handleError(401, 'Incorrect password', res);

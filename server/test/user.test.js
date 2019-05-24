@@ -35,7 +35,7 @@ describe('/USER DATA', () => {
 			firstname: 'main',
 			lastname: 'admin',
 			address: 'database',
-			isAdmin: true,
+			admin: true,
 		}, process.env.JWT_KEY, {
 			expiresIn: '1h',
 		});
@@ -45,7 +45,7 @@ describe('/USER DATA', () => {
 			firstname: 'Joseph',
 			lastname: 'Njuguna',
 			address: 'Kenya',
-			isAdmin: false,
+			admin: false,
 		}, process.env.JWT_KEY, {
 			expiresIn: '1h',
 		});

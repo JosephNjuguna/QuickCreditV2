@@ -5,9 +5,9 @@ import reqResponses from './Responses';
 dotenv.config();
 
 class Token {
-	static generateToken(email, firstname, lastname, address) {
+	static generateToken(email, firstname, lastname, address, admin) {
 		const payload = {
-			email, firstname, lastname, address,
+			email, firstname, lastname, address, admin
 		};
 		const token = jwt.sign(payload, process.env.JWT_KEY, { expiresIn: 60 * 60 * 24 * 7 });
 		return token;

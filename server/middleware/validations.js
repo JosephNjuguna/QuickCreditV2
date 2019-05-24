@@ -184,5 +184,23 @@ class Validations {
 		}
 	}
 
+	static async validateStatus(req, res, next) {
+		try {
+			const {
+				status,
+				repaid
+			} = req.query;
+			if(!status || !repaid){
+				return reqResponses.handleError(400, 'loan status input required', res);
+			}
+			if(status  != "accepted"|| status  != "rejected"|| repaid != "true" || repaid != "false" ){
+				return reqResponses.handleError(400, 'enter required loan status : accepted or rejected. And repaid : true or false ', res);
+			}
+			next();
+		} catch (error) {
+			return reqResponses.handleError(500, error.toString(), res);
+		}
+	}
+
 }
 export default Validations;

@@ -2,6 +2,7 @@ import { Pool } from 'pg';
 import dotenv from 'dotenv';
 import config from '../../config/config';
 import userDate from '../helpers/Date';
+import EncryptData from '../helpers/Encrypt';
 
 dotenv.config();
 
@@ -100,11 +101,12 @@ class DatabaseInit {
 				rows
 			} = await this.query(sql);
 			if (rows.length === 0) {
+				const hashedPassword = EncryptData.generateHash(process.env.password);
 				const adminUser = {
 					email: process.env.email,
 					firstname: 'admin',
 					lastname: 'admin',
-					password: process.env.password,
+					password: hashedPassword,
 					address: 'kenya',
 					status: 'verifieddsd',
 					isAdmin: true,
