@@ -29,17 +29,17 @@ class DatabaseInit {
         )`;
 			this.queryLoans = `CREATE TABLE IF NOT EXISTS loans(
           id serial PRIMARY KEY,
-          usermail VARCHAR(20) NOT NULL,
-          firstname VARCHAR(20) NOT NULL,
-          lastname VARCHAR(20) NOT NULL,
-          requestedOn VARCHAR(28) NOT NULL,
-          status VARCHAR(10) NOT NULL,
-          repaid VARCHAR(10) NOT NULL,
-          tenor VARCHAR(12) NOT NULL,
-          principalAmount VARCHAR(10) NOT NULL,
-          paymentInstallment VARCHAR(10)  NOT NULL,
-          totalAmounttopay VARCHAR(28) NOT NULL,
-          intrestRate VARCHAR(28) NOT NULL
+          usermail VARCHAR(100) NOT NULL,
+          firstname VARCHAR(100) NOT NULL,
+          lastname VARCHAR(100) NOT NULL,
+          requestedOn VARCHAR(100) NOT NULL,
+          status VARCHAR(100) NOT NULL,
+          repaid VARCHAR(100) NOT NULL,
+          tenor VARCHAR(120) NOT NULL,
+          principalAmount VARCHAR(100) NOT NULL,
+          paymentInstallment VARCHAR(100)  NOT NULL,
+          totalAmounttopay VARCHAR(100) NOT NULL,
+          intrestRate VARCHAR(100) NOT NULL
         )`;
 
 			this.queryPayments = `CREATE TABLE IF NOT EXISTS payments(

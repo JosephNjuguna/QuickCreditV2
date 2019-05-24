@@ -22,6 +22,7 @@ class Users {
 			const token = jwtGen.generateToken(email, firstname, lastname, address);
 			return reqResponses.handleSignupsuccess(201, 'successfully created account', token, addUser, res);
 		} catch (error) {
+			console.log(error);
 			return reqResponses.handleError(500, error.toString(), res);
 		}
 	}

@@ -58,7 +58,7 @@ class Loans {
 			}
 			reqResponses.handleSuccess(200, 'loan status', loanstatus.result, res);
 		} catch (error) {
-			reqResponses.handleError(500, error.toString(), res);
+			return reqResponses.handleError(500, error.toString(), res);
 		}
 	}
 
@@ -71,7 +71,7 @@ class Loans {
 			}
 			reqResponses.handleSuccess(200, 'success', oneloanData, res);
 		} catch (error) {
-			console.log(error);
+			return reqResponses.handleError(500, error.toString(), res);
 		}
 	}
 
@@ -84,7 +84,7 @@ class Loans {
 			if (!loanStatus) {
 				return reqResponses.handleError(404, loanStatus.result, res);
 			}
-			return reqResponses.handleSuccess(200, 'success', loanStatus.result, res);
+			return reqResponses.handleSuccess(200, 'success', loanStatus, res);
 		} catch (error) {
 			return reqResponses.handleError(500, error.toString(), res);
 		}
