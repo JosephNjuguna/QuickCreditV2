@@ -69,7 +69,9 @@ class Validations {
 
 	static async validatenewEmail(req, res, next) {
 		try {
-			const { email } = req.body;
+			const {
+				email
+			} = req.body;
 			const checkEmail = await Usermodel.findByEmail(email);
 			if (checkEmail) {
 				return reqResponses.handleError(409, 'Users email already exist', res);
@@ -98,7 +100,9 @@ class Validations {
 	static async validateLoan(req, res, next) {
 		try {
 			const loan = req.body.amount;
-			const { tenor } = req.body;
+			const {
+				tenor
+			} = req.body;
 
 			if (!loan || !tenor) {
 				return reqResponses.handleError(400, 'loan and tenor field required', res);
@@ -164,5 +168,21 @@ class Validations {
 			return reqResponses.handleError(500, error.toString(), res);
 		}
 	}
+
+	static validateID(req, res, next) {
+		try {
+			const {
+				id
+			} = req.params;
+			const re = /([0-9]*[.])?[0-9]+/;
+			if (id) {
+				if (!re.test(id)) reqResponses.handleError(404, 'enter an id in digits not letters', res);
+			}
+			next();
+		} catch (error) {
+			reqResponses.handleError(error.toString(), 500, res);
+		}
+	}
+
 }
 export default Validations;
