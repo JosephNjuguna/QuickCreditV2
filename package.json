@@ -7,7 +7,8 @@
     "start": "NODE_ENV=dev nodemon server.js --exec babel-node --",
     "lint": "node_modules/.bin/eslint ./ --fix",
     "coverage": "npm test && nyc report --reporter=text-lcov | coveralls",
-    "test": "NODE_ENV=test nyc mocha --require babel-register ./server/test/*.js  --timeout 150000 --exit"
+    "test": "NODE_ENV=test nyc mocha --require babel-register ./server/test/*.js  --timeout 150000 --exit",
+    "prod": "babel-node server.js"
   },
   "repository": {
     "type": "git",
@@ -30,7 +31,8 @@
     "express": "^4.17.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^1.19.0",
-    "pg": "^7.11.0"
+    "pg": "^7.11.0",
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
