@@ -38,7 +38,7 @@ class Validations {
 			}
 			if (password) {
 				re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(\W|_)).{7,}$/;
-				if (!re.test(password)) reqResponses.handleError(400, 'enter valid password. should be 7 character and more and contain letters and numbers', res);
+				if (!re.test(password)) reqResponses.handleError(400, 'enter valid password. should be more than 7 characters, contain letters,numbers and an alphanumeric character e.g @', res);
 			}
 			next();
 		} catch (error) {

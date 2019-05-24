@@ -220,16 +220,4 @@ describe('/LOAN', () => {
 		});
 	});
 
-	describe('/GET admin', () => {
-		it('should get all loans not fully paid', (done) => {
-			chai.request(app)
-				.get('/api/v2/loans?status=accepted&repaid=false')
-				.set('authorization', `Bearer ${adminToken}`)
-				.end((err, res) => {
-					res.should.have.status(200);
-					if (err) return done();
-					done();
-				});
-		});
-	});
 });
