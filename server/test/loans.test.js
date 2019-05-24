@@ -1,68 +1,69 @@
 import jwt from 'jsonwebtoken';
 import chai from 'chai';
 import chaiHttp from 'chai-http';
+import assert, {
+	equal,
+} from 'assert';
+import dotenv from 'dotenv';
 import app from '../../app';
 import Db from '../db/db';
 import total from '../helpers/Totalamount';
-import assert, {
-	equal
-} from 'assert';
-import dotenv from 'dotenv';
+import paymentFunction from '../models/Loans';
 
 dotenv.config();
 
 const {
-	expect
+	expect,
 } = chai;
 chai.should();
 chai.use(chaiHttp);
 
-let userToken, adminToken;
+let userToken; let
+	adminToken;
 const wrongId = 1232;
-
+const loanId = 1;
 describe('/LOAN', () => {
-
 	before('generate JWT', (done) => {
 		adminToken = jwt.sign({
-				email: 'admin123@gmail.com',
-				firstname: 'main',
-				lastname: 'admin',
-				address: 'database',
-				isAdmin: true
-			},
-			process.env.JWT_KEY, {
-				expiresIn: '1h',
-			});
+			email: 'admin123@gmail.com',
+			firstname: 'main',
+			lastname: 'admin',
+			address: 'database',
+			isAdmin: true,
+		},
+		process.env.JWT_KEY, {
+			expiresIn: '1h',
+		});
 
 		userToken = jwt.sign({
-				email: 'test1@mail.com',
-				firstname: 'Joseph',
-				lastname: 'Njuguna',
-				address: 'Kenya',
-				isAdmin: false
-			},
-			process.env.JWT_KEY, {
-				expiresIn: '1h',
-			});
+			email: 'test1@mail.com',
+			firstname: 'Joseph',
+			lastname: 'Njuguna',
+			address: 'Kenya',
+			isAdmin: false,
+		},
+		process.env.JWT_KEY, {
+			expiresIn: '1h',
+		});
 		done();
 	});
 
 	after('after all test', (done) => {
 		Db.query('DELETE FROM loans');
+		// Db.query('DELETE FROM payments');
 		Db.query('DROP TABLE IF EXISTS loans');
-		console.log('after');
+		// Db.query('DROP TABLE IF EXISTS payments');
 		done();
 	});
 
 	describe('/POST user request loan', () => {
-
 		it('should check loan field is not entered', (done) => {
 			chai.request(app)
 				.post('/api/v2/requestloan')
 				.set('authorization', `Bearer ${userToken}`)
 				.send({
 					'': 10000,
-					"tenor": 4
+					tenor: 4,
 				})
 				.end((err, res) => {
 					res.should.have.status(400);
@@ -77,7 +78,7 @@ describe('/LOAN', () => {
 				.set('authorization', `Bearer ${userToken}`)
 				.send({
 					amount: '',
-					tenor: 2
+					tenor: 2,
 				})
 				.end((err, res) => {
 					res.should.have.status(400);
@@ -91,8 +92,8 @@ describe('/LOAN', () => {
 				.post('/api/v2/requestloan')
 				.set('authorization', `Bearer ${userToken}`)
 				.send({
-					amount: 200000,
-					tenor: 6
+					amount: 2000,
+					tenor: 6,
 				})
 				.end((err, res) => {
 					res.should.have.status(200);
@@ -107,7 +108,7 @@ describe('/LOAN', () => {
 				.set('authorization', `Bearer ${userToken}`)
 				.send({
 					amount: 10000,
-					tenor: 6
+					tenor: 6,
 				})
 				.end((err, res) => {
 					res.should.have.status(409);
@@ -117,85 +118,115 @@ describe('/LOAN', () => {
 		});
 	});
 
-	describe('/CALCULATE TOTAL AMOUNT', (done) => {
-
-		it('should calculate the Total amount payable when user enters loan request', () => {
-			assert.equal(2100, total.totalAmountdata(2000, 4).totalamounttoPay);
-			expect(total.totalAmountdata(2000, 5)).to.be.an('Object');
+	describe('/PATCH  accept loan application', () => {
+		it('should check loan id been updated is no available ', (done) => {
+			chai.request(app)
+				.patch('/api/v2/loan/100')
+				.set('authorization', `Bearer ${adminToken}`)
+				.send({
+					status: 'accepted',
+				})
+				.end((err, res) => {
+					res.should.have.status(404);
+					if (err) return done();
+					done();
+				});
 		});
 
+		it('should update a loan application as accepted', (done) => {
+			chai.request(app)
+				.patch('/api/v2/loan/1')
+				.set('authorization', `Bearer ${adminToken}`)
+				.send({
+					status: 'accepted',
+				})
+				.end((err, res) => {
+					res.should.have.status(200);
+					if (err) return done();
+					done();
+				});
+		});
+	});
+
+	describe('/POST user pay loan', () => {
+		it('check user has not entered amount to pay', (done) => {
+			chai.request(app)
+				.post(`/api/v2/payloan/${loanId}`)
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: '',
+				})
+				.end((err, res) => {
+					expect(res.status).equals(400);
+					if (err) return done();
+					done();
+				});
+		});
+
+		it('check user loan id doesn`t exist', (done) => {
+			chai.request(app)
+				.post(`/api/v2/payloan/${wrongId}`)
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: 575,
+				})
+				.end((err, res) => {
+					expect(res.status).equals(404);
+					if (err) return done();
+					done();
+				});
+		});
+
+		it('check user has paid loan first time', (done) => {
+			chai.request(app)
+				.post(`/api/v2/payloan/${loanId}`)
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: 350,
+				})
+				.end((err, res) => {
+					expect(res.status).equals(200);
+					if (err) return done();
+					done();
+				});
+		});
+
+		it('check user has paid loan second time', (done) => {
+			chai.request(app)
+				.post(`/api/v2/payloan/${loanId}`)
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: 350,
+				})
+				.end((err, res) => {
+					expect(res.status).equals(200);
+					if (err) return done();
+					done();
+				});
+		});
+
+		it('check user has paid loan third time', (done) => {
+			chai.request(app)
+				.post(`/api/v2/payloan/${loanId}`)
+				.set('authorization', `Bearer ${userToken}`)
+				.send({
+					amount: 350,
+				})
+				.end((err, res) => {
+					expect(res.status).equals(200);
+					if (err) return done();
+					done();
+				});
+		});
 	});
 
 	describe('/GET admin', () => {
-
-		it('should get all loan applications', (done) => {
+		it('should get all loans not fully paid', (done) => {
 			chai.request(app)
-				.get('/api/v2/loans')
+				.get('/api/v2/loans?status=accepted&repaid=false')
 				.set('authorization', `Bearer ${adminToken}`)
 				.end((err, res) => {
 					res.should.have.status(200);
-					if (err) return done();
-					done();
-				});
-		});
-
-		it('should check user has loan request available', (done) => {
-			chai.request(app)
-				.post('/api/v2/requestloan')
-				.set('authorization', `Bearer ${userToken}`)
-				.send({
-					amount: 10000,
-					tenor: 6
-				})
-				.end((err, res) => {
-					res.should.have.status(409);
-					if (err) return done();
-					done();
-				});
-		});
-	});
-
-	describe('/CALCULATE TOTAL AMOUNT', (done) => {
-		it('should calculate the Total amount payable when user enters loan request', () => {
-			assert.equal(2100, total.totalAmountdata(2000, 4).totalamounttoPay);
-			expect(total.totalAmountdata(2000, 5)).to.be.an('Object');
-		});
-	});
-
-	describe('/GET admin get loans by their status', (done) => {
-		it('should get all loans fully paid', (done) => {
-			chai.request(app)
-				.get('/api/v2/loans?status=pending&repaid=false')
-				.set('authorization', `Bearer ${adminToken}`)
-				.end((err, res) => {
-					res.should.have.status(200);
-					if (err) return done();
-					done();
-				});
-		});
-
-		it('should check a loan id is not available', (done) => {
-			chai.request(app)
-				.get('/api/v2/loan/30000')
-				.set('authorization', `Bearer ${adminToken}`)
-				.send({
-					status: 'rejected'
-				})
-				.end((err, res) => {
-					res.should.have.status(404);
-					if (err) return done();
-					done();
-				});
-		});
-		it('should check a loan id is not available', (done) => {
-			chai.request(app)
-				.get('/api/v2/loan/30000')
-				.set('authorization', `Bearer ${adminToken}`)
-				.send({
-					status: 'rejected'
-				})
-				.end((err, res) => {
-					res.should.have.status(404);
 					if (err) return done();
 					done();
 				});
