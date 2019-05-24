@@ -97,7 +97,7 @@ class DatabaseInit {
 			const { email } = process.env;
 			const sql = `SELECT * FROM users WHERE email='${email}'`;
 			const {
-				rows,
+				rows
 			} = await this.query(sql);
 			if (rows.length === 0) {
 				const adminUser = {
@@ -110,7 +110,7 @@ class DatabaseInit {
 					isAdmin: true,
 					signedupDate: userDate.date(),
 				};
-				const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8 , $9) returning *';
+				const sql = 'INSERT INTO users ( email, firstname, lastname, userpassword, address, status, isAdmin, signedupDate) values($1, $2, $3, $4, $5, $6 , $7 ,$8) returning *';
 				const value = [adminUser.email, adminUser.firstname, adminUser.lastname, adminUser.password, adminUser.address, adminUser.status, adminUser.isAdmin, adminUser.signedupDate];
 				const {
 					row,
